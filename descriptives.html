@@ -18,6 +18,14 @@
   <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/lightbox.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formula {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -58,7 +66,7 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
               <li class="has-sub">
                 <a href="javascript:void(0)">SPSS</a>
                 <ul class="sub-menu">
@@ -98,169 +106,96 @@
       </div>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
+<!-- ***** Header Area End ***** -->
 
-  <section class="heading-page header-text" id="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-            <h6>Great articles</h6>
-        </div>
+<section class="heading-page header-text" id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h6>Introduction to Descriptive Statistics</h6>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="meetings-page" id="meetings">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="meeting-single-item">
-                <div class="down-content">
-                  <h4>Great articles to read</h4>
-                  <div class="article">
-                    <h5>Influential Papers in Statistical Probability</h5>
-                    <p>This collection features a selection of influential papers in statistical probability that have significantly contributed to the field. These articles delve into various aspects of statistical theory, methods, and applications, providing valuable insights for researchers, practitioners, and enthusiasts. Explore these seminal works to deepen your understanding of statistical probability.</p>
-                    <div class="paper">
-                      <h6>Cohen, J. (1994). "The Earth is Round (p &lt; .05)". American Psychologist.</h6>
-                      <p class="summary">Summary: Cohen's paper discusses the over-reliance on p-values in scientific research and emphasizes the need for a more nuanced interpretation of statistical significance.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1037/0003-066X.49.12.997" target="_blank" rel="nofollow">10.1037/0003-066X.49.12.997</a></p>
-                    </div>
+<section>
+  <h2>Introduction to Descriptive Statistics</h2>
+  <article>
+    <p>Descriptive statistics is the branch of statistics that deals with the collection, analysis, and interpretation of data. It involves summarizing and describing the main features of a dataset, such as measures of central tendency, measures of variability, and measures of shape. Descriptive statistics is useful for organizing and presenting data in a meaningful way.</p>
+  </article>
 
-                    <div class="paper">
-                      <h6>Gigerenzer, G. (2004). "Mindless Statistics."</h6>
-                      <p class="summary">Summary: Gigerenzer challenges traditional statistical methods and argues for more intuitive and transparent approaches to statistical reasoning.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1017/cbo9780511808098.003" target="_blank" rel="nofollow">10.1017/cbo9780511808098.003</a></p>
-                    </div>
+  <h2>Measures of Central Tendency</h2>
+  <ul>
+    <li><a href="central_tendency.html">Measures of Central Tendency</a></li>
+    <li><a href="dispersion.html">Measures of Variability</a></li>
+    <li><a href="shape.html">Measures of Shape</a></li>
+  </ul>
+</section>
 
-                    <div class="paper">
-                      <h6>Taleb, N.N. (2007). "The Black Swan: The Impact of the Highly Improbable."</h6>
-                      <p class="summary">Summary: Taleb explores the concept of rare and unpredictable events and their profound influence on our lives, providing insights into risk management and decision-making.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/9780470390171" target="_blank" rel="nofollow">10.1002/9780470390171</a></p>
-                    </div>
+<div class="footer">
+  <p>Copyright © 2023 Selvastics. All Rights Reserved. Made with <3 and ☕ in Cologne, Germany.</p>
+</div>
 
-                    <div class="paper">
-                      <h6>Tukey, J. W. (1977). "Exploratory Data Analysis."</h6>
-                      <p class="summary">Summary: Tukey advocates for visual and exploratory approaches to data analysis, emphasizing the importance of graphical techniques in understanding datasets.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1007/978-1-4612-1096-3" target="_blank" rel="nofollow">10.1007/978-1-4612-1096-3</a></p>
-                    </div>
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                    <div class="paper">
-                      <h6>Neyman, J., Pearson, E. S. (1933). "On the Problem of the Most Efficient Tests of Statistical Hypotheses." Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character.</h6>
-                      <p class="summary">Summary: This foundational work introduces the concept of hypothesis testing and provides insights into the development of optimal statistical tests.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1098/rsta.1933.0009" target="_blank" rel="nofollow">10.1098/rsta.1933.0009</a></p>
-                    </div>
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/video.js"></script>
+<script src="assets/js/slick-slider.js"></script>
+<script src="assets/js/custom.js"></script>
+<script>
+  //according to loftblog tut
+  
+  $('.nav li:first').addClass('active');
 
-                    <div class="paper">
-                      <h6>Fisher, R. A. (1925). "Statistical Methods for Research Workers."</h6>
-                      <p class="summary">Summary: Fisher's classic book introduces many fundamental statistical concepts and techniques widely used in research.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/bimj.4710100504" target="_blank" rel="nofollow">10.1002/bimj.4710100504</a></p>
-                    </div>
+  var showSection = function showSection(section, isAnimate) {
+    var
+      direction = section.replace(/#/, ''),
+      reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+      reqSectionPos = reqSection.offset().top - 0;
 
-                    <div class="paper">
-                      <h6>Student (1908). "The Probable Error of a Mean." Biometrika.</h6>
-                      <p class="summary">Summary: This influential paper, authored under the pseudonym 'Student', introduces the concept of the t-test, a widely used statistical test for comparing means.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.2307/2331554" target="_blank" rel="nofollow">10.2307/2331554</a></p>
-                    </div>
+    if (isAnimate) {
+      $('body, html').animate({
+        scrollTop: reqSectionPos
+      },
+        800);
+    } else {
+      $('body, html').scrollTop(reqSectionPos);
+    }
 
-                    <div class="paper">
-                      <h6>Bayes, T. (1763). "An Essay towards solving a Problem in the Doctrine of Chances." Philosophical Transactions.</h6>
-                      <p class="summary">Summary: Bayes' Theorem, introduced in this paper, revolutionized the field of Bayesian statistics, providing a framework for updating beliefs based on new evidence.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1098/rstl.1763.0053" target="_blank" rel="nofollow">10.1098/rstl.1763.0053</a></p>
-                    </div>
+  };
 
-                    <div class="paper">
-                      <h6>Kolmogorov, A. N. (1933). "Foundations of the Theory of Probability."</h6>
-                      <p class="summary">Summary: Kolmogorov's seminal work formalizes probability theory, establishing axioms and fundamental concepts that underpin modern probability theory.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.2307/1989333" target="_blank" rel="nofollow">10.2307/1989333</a></p>
-                    </div>
-
-                    <div class="paper">
-                      <h6>Kendall, M., & Stuart, A. (1967). "The Advanced Theory of Statistics." (Vol. 1).</h6>
-                      <p class="summary">Summary: This comprehensive textbook covers a wide range of statistical methods, providing a solid foundation in statistical theory and practice.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/9780470316669" target="_blank" rel="nofollow">10.1002/9780470316669</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="main-button-red">
-                <a href="meetings.html">Back To Meetings List</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
-      <p>Copyright © 2023 Selvastics. All Rights Reserved. Made with <3 and ☕ in Cologne, Germany.</p>
-    </div>
-  </section>
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/lightbox.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/video.js"></script>
-  <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script>
-    //according to loftblog tut
-    $('.nav li:first').addClass('active');
-
-    var showSection = function showSection(section, isAnimate) {
+  var checkSection = function checkSection() {
+    $('.section').each(function () {
       var
-        direction = section.replace(/#/, ''),
-        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-        reqSectionPos = reqSection.offset().top - 0;
-
-      if (isAnimate) {
-        $('body, html').animate({
-          scrollTop: reqSectionPos
-        },
-          800);
-      } else {
-        $('body, html').scrollTop(reqSectionPos);
-      }
-
-    };
-
-    var checkSection = function checkSection() {
-      $('.section').each(function () {
+        $this = $(this),
+        topEdge = $this.offset().top - 80,
+        bottomEdge = topEdge + $this.height(),
+        wScroll = $(window).scrollTop();
+      if (topEdge < wScroll && bottomEdge > wScroll) {
         var
-          $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-        if (topEdge < wScroll && bottomEdge > wScroll) {
-          var
-            currentId = $this.data('section'),
-            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-          reqLink.closest('li').addClass('active').
-            siblings().removeClass('active');
-        }
+          currentId = $this.data('section'),
+          reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+        reqLink.closest('li').addClass('active').
+          siblings().removeClass('active');
+      }
+    });
+  };
+
+  $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+        e.preventDefault();
+        showSection($(this).attr('href'), true);
       });
-    };
 
-    $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-          e.preventDefault();
-          showSection($(this).attr('href'), true);
-        });
-
-        $(window).scroll(function () {
-          checkSection();
-        });
-    </script>
+      $(window).scroll(function () {
+        checkSection();
+      });
+</script>
 </body>
-
-
-  </body>
 
 </html>
