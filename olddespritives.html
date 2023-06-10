@@ -18,6 +18,14 @@
   <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/lightbox.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formula {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -58,7 +66,7 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
               <li class="has-sub">
                 <a href="javascript:void(0)">SPSS</a>
                 <ul class="sub-menu">
@@ -104,99 +112,54 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-            <h6>Great articles</h6>
+          <h6>Statistical Indices</h6>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="meetings-page" id="meetings">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="meeting-single-item">
-                <div class="down-content">
-                  <h4>Great articles to read</h4>
-                  <div class="article">
-                    <h5>Influential Papers in Statistical Probability</h5>
-                    <p>This collection features a selection of influential papers in statistical probability that have significantly contributed to the field. These articles delve into various aspects of statistical theory, methods, and applications, providing valuable insights for researchers, practitioners, and enthusiasts. Explore these seminal works to deepen your understanding of statistical probability.</p>
-                    <div class="paper">
-                      <h6>Cohen, J. (1994). "The Earth is Round (p &lt; .05)". American Psychologist.</h6>
-                      <p class="summary">Summary: Cohen's paper discusses the over-reliance on p-values in scientific research and emphasizes the need for a more nuanced interpretation of statistical significance.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1037/0003-066X.49.12.997" target="_blank" rel="nofollow">10.1037/0003-066X.49.12.997</a></p>
-                    </div>
+  <section>
+    <h2>Statistical Indices</h2>
 
-                    <div class="paper">
-                      <h6>Gigerenzer, G. (2004). "Mindless Statistics."</h6>
-                      <p class="summary">Summary: Gigerenzer challenges traditional statistical methods and argues for more intuitive and transparent approaches to statistical reasoning.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1017/cbo9780511808098.003" target="_blank" rel="nofollow">10.1017/cbo9780511808098.003</a></p>
-                    </div>
+    <article>
+      <h3>1. Mean</h3>
+      <p>The mean, often colloquially referred to as the average, is a measure of central tendency that provides a snapshot of the "center" of a dataset. It is calculated by summing all the values in a dataset and dividing by the number of values.</p>
+      <p>Mathematically, for a dataset \(X\) with \(N\) values \(x_1, x_2, ..., x_N\), the mean \(\mu\) is given by:</p>
+      <p class="formula">\(\mu = \frac{1}{N}\sum_{i=1}^{N}x_i\)</p>
+      <p>The mean is a fundamental concept in statistics and is used in a wide range of applications, from calculating average grades in a class to determining average income in a country. However, one of the limitations of the mean is its sensitivity to outliers. Extremely high or low values in the dataset can skew the mean, making it less representative of the "typical" value in the dataset.</p>
+      <p>When reporting the mean, it's important to also report the sample size and possibly the range of the data to give an idea of the distribution. For instance, "The mean age of the group is 30.5 years (n=10, range 21-90 years)."</p>
 
-                    <div class="paper">
-                      <h6>Taleb, N.N. (2007). "The Black Swan: The Impact of the Highly Improbable."</h6>
-                      <p class="summary">Summary: Taleb explores the concept of rare and unpredictable events and their profound influence on our lives, providing insights into risk management and decision-making.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/9780470390171" target="_blank" rel="nofollow">10.1002/9780470390171</a></p>
-                    </div>
+      <h3>2. Median</h3>
+      <p>The median is another measure of central tendency, representing the middle value in an ordered dataset. If the dataset has an odd number of observations, the median is the middle value. If the dataset has an even number of observations, the median is the average of the two middle values.</p>
+      <p>Unlike the mean, the median is not affected by outliers and thus provides a more robust measure of the "center" of the data for skewed distributions.</p>
+      <p>When reporting the median, it's often useful to also report the interquartile range (IQR), which gives an idea of the spread of the middle 50% of the data. For instance, "The median age of the group is 25.5 years (IQR 23-28 years)."</p>
 
-                    <div class="paper">
-                      <h6>Tukey, J. W. (1977). "Exploratory Data Analysis."</h6>
-                      <p class="summary">Summary: Tukey advocates for visual and exploratory approaches to data analysis, emphasizing the importance of graphical techniques in understanding datasets.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1007/978-1-4612-1096-3" target="_blank" rel="nofollow">10.1007/978-1-4612-1096-3</a></p>
-                    </div>
+      <h3>3. Mode</h3>
+      <p>The mode is the value that appears most frequently in a dataset. A dataset may have one mode (unimodal), more than one mode (multimodal), or no mode at all (amodal). The mode can be useful for identifying the most common value in a dataset, but it may not be representative of the dataset as a whole, especially for continuous data.</p>
+      <p>When reporting the mode, it can be useful to also report the frequency of the mode, especially in a multimodal dataset. For instance, "The mode of the dataset is 29, which appears twice."</p>
 
-                    <div class="paper">
-                      <h6>Neyman, J., Pearson, E. S. (1933). "On the Problem of the Most Efficient Tests of Statistical Hypotheses." Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character.</h6>
-                      <p class="summary">Summary: This foundational work introduces the concept of hypothesis testing and provides insights into the development of optimal statistical tests.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1098/rsta.1933.0009" target="_blank" rel="nofollow">10.1098/rsta.1933.0009</a></p>
-                    </div>
+      <h3>4. Range</h3>
+      <p>The range is a measure of dispersion, representing the difference between the maximum and minimum values in a dataset. It is calculated as:</p>
+      <p class="formula">\(\text{Range} = \text{Max}(X) - \text{Min}(X)\)</p>
+      <p>The range provides a quick snapshot of the spread of the data, but it is sensitive to outliers and does not provide information about how the data is distributed around the center.</p>
+      <p>When reporting the range, it's often useful to also report the minimum and maximum values. For instance, "The range of ages in the group is 69 years, with a minimum age of 21 years and a maximum age of 90 years."</p>
 
-                    <div class="paper">
-                      <h6>Fisher, R. A. (1925). "Statistical Methods for Research Workers."</h6>
-                      <p class="summary">Summary: Fisher's classic book introduces many fundamental statistical concepts and techniques widely used in research.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/bimj.4710100504" target="_blank" rel="nofollow">10.1002/bimj.4710100504</a></p>
-                    </div>
+      <h3>5. Variance</h3>
+      <p>Variance is a measure of dispersion that indicates how far the values in a dataset are spread out from the mean. The variance \(s^2\) for a dataset \(X\) with \(N\) values and mean \(\mu\) is calculated as:</p>
+      <p class="formula">\(s^2 = \frac{1}{N-1}\sum_{i=1}^{N}(x_i - \mu)^2\)</p>
+      <p>The variance provides a measure of the "spread" of the data, but its units are the square of the original data units, which can be difficult to interpret. For example, if our dataset represents ages, the variance would be in "squared years," which doesn't have a clear real-world meaning.</p>
+      <p>When reporting the variance, it's important to specify that it's the variance and to give the units. For instance, "The variance of ages in the group is 123.45 squared years."</p>
 
-                    <div class="paper">
-                      <h6>Student (1908). "The Probable Error of a Mean." Biometrika.</h6>
-                      <p class="summary">Summary: This influential paper, authored under the pseudonym 'Student', introduces the concept of the t-test, a widely used statistical test for comparing means.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.2307/2331554" target="_blank" rel="nofollow">10.2307/2331554</a></p>
-                    </div>
-
-                    <div class="paper">
-                      <h6>Bayes, T. (1763). "An Essay towards solving a Problem in the Doctrine of Chances." Philosophical Transactions.</h6>
-                      <p class="summary">Summary: Bayes' Theorem, introduced in this paper, revolutionized the field of Bayesian statistics, providing a framework for updating beliefs based on new evidence.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1098/rstl.1763.0053" target="_blank" rel="nofollow">10.1098/rstl.1763.0053</a></p>
-                    </div>
-
-                    <div class="paper">
-                      <h6>Kolmogorov, A. N. (1933). "Foundations of the Theory of Probability."</h6>
-                      <p class="summary">Summary: Kolmogorov's seminal work formalizes probability theory, establishing axioms and fundamental concepts that underpin modern probability theory.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.2307/1989333" target="_blank" rel="nofollow">10.2307/1989333</a></p>
-                    </div>
-
-                    <div class="paper">
-                      <h6>Kendall, M., & Stuart, A. (1967). "The Advanced Theory of Statistics." (Vol. 1).</h6>
-                      <p class="summary">Summary: This comprehensive textbook covers a wide range of statistical methods, providing a solid foundation in statistical theory and practice.</p>
-                      <p class="doi">DOI: <a href="https://doi.org/10.1002/9780470316669" target="_blank" rel="nofollow">10.1002/9780470316669</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="main-button-red">
-                <a href="meetings.html">Back To Meetings List</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <h3>6. Standard Deviation</h3>
+      <p>The standard deviation is the square root of the variance, providing a measure of dispersion in the same units as the original data. It is calculated as:</p>
+      <p class="formula">\(s = \sqrt{s^2} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \mu)^2}\)</p>
+      <p>The standard deviation provides a measure of the average distance of the data values from the mean. A small standard deviation indicates that the data points tend to be close to the mean, while a large standard deviation indicates that the data points are spread out over a wider range.</p>
+      <p>When reporting the standard deviation, it's important to give the units. For instance, "The standard deviation of ages in the group is 5 years."</p>
+    </article>
+  </section>
     <div class="footer">
       <p>Copyright © 2023 Selvastics. All Rights Reserved. Made with <3 and ☕ in Cologne, Germany.</p>
-    </div>
+    </div>    
   </section>
 
   <!-- Scripts -->
