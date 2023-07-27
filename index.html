@@ -163,22 +163,26 @@
    <div class="container">
     <div class="row">
      <div class="col-lg-12">
-      <div style="display:flex; justify-content:flex-start; align-items:flex-start;">
-       <div class="caption" style="margin-left: 120px;">
+      <div class="row" style="justify-content:flex-start; align-items:flex-start;">
+       <div class="caption col-lg-8" style="margin-left: 120px;">
          <h6></h6>
          <h2>Welcome to Selvastics</h2>
          <p>This is a dedicated platform for exploring the fascinating world of statistics and probability. Here you will find comprehensive guides and tutorials on statistical computing using SPSS and R.</p>
          <p>Dive into a wide range of articles that cover various topics in these fields. From clear explanations of fundamental concepts to in-depth discussions of significant research and practical applications of statistical methods, there's something here for everyone.</p>
          <p>Whether you're a student, an educator, a professional, or simply an enthusiast in statistics and probability, this blog is designed to pique your interest and expand your knowledge!</p>
        </div>        
-       <img alt="Selvastics Image" src="assets/images/dd_f.png" style="position:absolute; top:100px;right: 180px; max-width:24%; height:auto;"/>
-     </div>
+       <div class="col-lg-4" style="margin-left: auto; margin-top: 80px; margin-right: 45px;">
+         <img class="img-fluid" alt="Selvastics Image" src="assets/images/dd_f.png" style="max-width:100%; height:auto;"/>
+       </div>
+      </div>
      </div>
     </div>
    </div>
   </div> 
 </section>
 <!-- ***** Main Banner Area End ***** -->
+
+
   <section class="services">
    <div class="container">
     <div class="row">
@@ -275,6 +279,7 @@
      <div class="col-lg-12">
       <div class="section-heading">
        <h2>
+        <br>
         Useful links and tools
        </h2>
       </div>
@@ -414,20 +419,34 @@
        </div>
       </div>
      </div>
-     <section class="contact-us" id="contact">
-      <div class="container">
-       <div class="row">
-        <div class="col-lg-9 align-self-center">
-         <div class="row">
-          <div class="col-lg-12">
-           <form action="path_to_your_server_side_script" id="contact" method="post">
-            <div class="row">
-             <div class="col-lg-12">
+          <div class="col-lg-12" style="margin-bottom: 0;">
+            <div class="section-heading">
+            </div>
+          </div>
+          <div class="col-lg-12" style="margin-top: 0;">
+            <div class="section-heading">
               <h2>
-               Let's get in touch
+                Contact
               </h2>
-             </div>
-             <div class="col-lg-4">
+            </div>
+          </div>
+
+
+          <section class="contact-us" id="contact">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-9 align-self-center" style="margin-top: -130px;">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <form action="path_to_your_server_side_script" id="contact" method="post">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <h2>
+                              Let's get in touch
+                            </h2>
+                          </div>
+                          <div class="col-lg-4">
+          
               <fieldset>
                <input id="name" name="name" placeholder="YOURNAME...*" required="" type="text"/>
               </fieldset>
@@ -485,81 +504,71 @@
         </div>
        </div>
       </div>
+    </div>
+    <footer style="flex-shrink: 0; margin-top: -90px; margin-bottom: -100px;">
       <div class="footer">
-       <p>
-        Copyright © 2023 Selvastics. Made with &lt;3 and ☕ in Cologne, Germany. All Rights Reserved.
-       </p>
+        <p>
+          Copyright © 2023 Selvastics. Made with &lt;3 and ☕ in Cologne, Germany. All Rights Reserved.
+        </p>
       </div>
-     </section>
-     <!-- Scripts -->
-     <!-- Bootstrap core JavaScript -->
-     <script src="vendor/jquery/jquery.min.js">
-     </script>
-     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js">
-     </script>
-     <script src="assets/js/isotope.min.js">
-     </script>
-     <script src="assets/js/owl-carousel.js">
-     </script>
-     <script src="assets/js/lightbox.js">
-     </script>
-     <script src="assets/js/tabs.js">
-     </script>
-     <script src="assets/js/video.js">
-     </script>
-     <script src="assets/js/slick-slider.js">
-     </script>
-     <script src="assets/js/custom.js">
-     </script>
-     <script>
-      //according to loftblog tut
-        $('.nav li:first').addClass('active');
+    </footer>
+    </body>
+    </html>
+    
+    
 
-        var showSection = function showSection(section, isAnimate) {
-          var
-          direction = section.replace(/#/, ''),
-          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-          reqSectionPos = reqSection.offset().top - 0;
-
-          if (isAnimate) {
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+    //according to loftblog tut
+    $('.nav li:first').addClass('active');
+    var showSection = function showSection(section, isAnimate) {
+        var
+        direction = section.replace(/#/, ''),
+        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+        reqSectionPos = reqSection.offset().top - 0;
+        if (isAnimate) {
             $('body, html').animate({
-              scrollTop: reqSectionPos },
+                scrollTop: reqSectionPos },
             800);
-          } else {
+        } else {
             $('body, html').scrollTop(reqSectionPos);
-          }
-
-        };
-
-        var checkSection = function checkSection() {
-          $('.section').each(function () {
+        }
+    };
+    var checkSection = function checkSection() {
+        $('.section').each(function () {
             var
             $this = $(this),
             topEdge = $this.offset().top - 80,
             bottomEdge = topEdge + $this.height(),
             wScroll = $(window).scrollTop();
             if (topEdge < wScroll && bottomEdge > wScroll) {
-              var
-              currentId = $this.data('section'),
-              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-              reqLink.closest('li').addClass('active').
-              siblings().removeClass('active');
+                var
+                currentId = $this.data('section'),
+                reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                reqLink.closest('li').addClass('active').
+                siblings().removeClass('active');
             }
-          });
-        };
-
-        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-          e.preventDefault();
-          showSection($(this).attr('href'), true);
         });
-
-        $(window).scroll(function () {
-          checkSection();
-        });
-     </script>
-    </div>
-   </div>
-  </section>
- </body>
-</html>
+    };
+    $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+        e.preventDefault();
+        showSection($(this).attr('href'), true);
+    });
+    $(window).scroll(function () {
+        checkSection();
+    });
+    </script>
+    <div style="clear:both;"></div>
+  </body>
+ </html>
 
