@@ -172,8 +172,15 @@
          <p>Whether you're a student, an educator, a professional, or simply an enthusiast in statistics and probability, this blog is designed to pique your interest and expand your knowledge!</p>
        </div>        
        <div class="col-lg-4" style="margin-left: auto; margin-top: 80px; margin-right: 45px;">
-         <img class="img-fluid" alt="Selvastics Image" src="assets/images/dd_f.png" style="max-width:100%; height:auto;"/>
+        <img class="img-fluid hide-on-mobile" alt="Selvastics Image" src="assets/images/dd_f.png" style="max-width:100%; height:auto;"/>
        </div>
+       <style>
+        @media screen and (max-width: 1200px) { /* Change to the width at which to hide the image */
+            .hide-on-mobile {
+                display: none;
+            }
+        }
+        </style>
       </div>
      </div>
     </div>
@@ -531,6 +538,8 @@
     <script src="assets/js/custom.js"></script>
 
     
+
+
     <style>
       .owl-service-item, .owl-courses-item {
           overflow: hidden;
