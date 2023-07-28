@@ -1,5 +1,5 @@
 (function ($) {
-	
+
 	"use strict";
 
 	$(window).scroll(function() {
@@ -13,7 +13,7 @@
 	    $("header").removeClass("background-header");
 	  }
 	});
-	
+		
 	$('.filters ul li').click(function(){
         $('.filters ul li').removeClass('active');
         $(this).addClass('active');
@@ -41,6 +41,7 @@
 	    toggle: false
 	  },
 
+	
 	  openAccordion: function(toggle, content) {
 	    if (content.children.length) {
 	      toggle.classList.add("is-open");
@@ -57,6 +58,7 @@
 	  init: function(el) {
 	    const _this = this;
 
+	
 	    // Override default settings with classes
 	    let is_first_expanded = _this.settings.first_expanded;
 	    if (el.classList.contains("is-first-expanded")) is_first_expanded = true;
@@ -115,6 +117,7 @@
 		dots: true,
 		nav: true,
 		autoplay: true,
+		autoplayTimeout: 10000, // Add this line for 10 seconds autoplay. Adjust the number for different durations.
 		margin:30,
 		  responsive:{
 			  0:{
@@ -135,6 +138,8 @@
 		dots: true,
 		nav: true,
 		autoplay: true,
+		autoplayTimeout: 10000, // Add this line for 10 seconds autoplay. Adjust the number for different durations.
+
 		margin:30,
 		  responsive:{
 			  0:{
@@ -313,6 +318,5 @@
             });
         }
     })
-
 
 })(window.jQuery);
