@@ -58,7 +58,8 @@
     </div>
    </div>
   </div>
-<!-- ***** Header Area Start ***** -->
+ 
+  <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
   <div class="container">
       <div class="row">
@@ -78,17 +79,17 @@
                       <li class="has-sub">
                           <a href="javascript:void(0)">SPSS</a>
                           <ul class="sub-menu">
-                            <li><a href="javascript:alert('Coming Soon!');">SPSS Overview</a></li>
-                            <li><a href="javascript:alert('Coming Soon!');">SPSS Tutorials</a></li>
-                            <li><a href="javascript:alert('Coming Soon!');">SPSS Examples</a></li>
+                              <li><a href="descriptives.html">SPSS Overview</a></li>
+                              <li><a href="descriptives.html">SPSS Tutorials</a></li>
+                              <li><a href="descriptives.html">SPSS Examples</a></li>
                           </ul>
                       </li>
                       <li class="has-sub">
                           <a href="javascript:void(0)">R</a>
                           <ul class="sub-menu">
-                            <li><a href="javascript:alert('Coming Soon!');">R Overview</a></li>
-                            <li><a href="javascript:alert('Coming Soon!');">R Tutorials</a></li>
-                            <li><a href="javascript:alert('Coming Soon!');">R Examples</a></li>                      
+                              <li><a href="descriptives.html">R Overview</a></li>
+                              <li><a href="descriptives.html">R Tutorials</a></li>
+                              <li><a href="descriptives.html">R Examples</a></li>
                           </ul>
                       </li>
                       <li class="has-sub">
@@ -113,7 +114,39 @@
 </header>
 <!-- ***** Header Area End ***** -->
 
+<style>
+  @media (max-width: 760px) {
+      #nav-menu {
+          display: none;
+          background-color: #fff;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          overflow-y: auto;
+          padding: 15px;
+      }
+      #nav-menu.active {
+          display: block;
+      }
+      #nav-menu li {
+          display: block;
+      }
+      #nav-menu li a {
+          color: #000;
+      }
+  }
+</style>
 
+<script>
+  $(document).ready(function(){
+      $('.menu-trigger').click(function() {
+          $('#nav-menu').toggleClass('active');
+      });
+  });
+</script>
 
 <!-- ***** Main Banner Area Start ***** -->
 <section class="section main-banner" data-section="section1" id="top">
