@@ -155,6 +155,13 @@
 	  })
 	
 
+
+	  @media (max-width: 768px) {
+		/* Styles for burger menu */
+	  }
+	  
+	  
+
 	// Menu Dropdown Toggle
 	if($('.menu-trigger').length){
 		$(".menu-trigger").on('click', function() {	
