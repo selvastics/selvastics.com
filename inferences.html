@@ -140,7 +140,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h2>descriptive indices</h2>
+          <h2>inferential indices</h2>
           <h6>by selvastics</h6>
         </div>
       </div>
@@ -150,7 +150,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descriptive Statistics</title>
+    <title>Inferential Statistics</title>
     <link rel="stylesheet" href="styles.css">
     <style>
       .meeting-single-item {
@@ -161,7 +161,7 @@
 
 
   <body>
-    <section class="meetings-page" id="meetings";>
+    <section class="meetings-page" id="meetings">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -169,64 +169,52 @@
               <div class="col-lg-12">
                 <div class="meeting-single-item">
                   <div class="down-content" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                    <h1>Descriptive Statistics</h1>
-                    <p>Descriptive statistics is a branch of statistics that deals with the organization, summarization, and presentation of data. In this section, I'll discuss some key statistical indices that are commonly used to describe data:</p>
+                    <h1>Inferential Statistics</h1>
+                    <p>Inferential statistics is a branch of statistics that deals with making predictions or inferences about a population based on a sample of data taken from the population. In this section, I'll discuss probability distributions, sampling distributions, estimation, and hypothesis testing.</p>
                     <hr>
                     <div class="text-box">
-                      <h3>Measures of Central Tendency</h3>
-                      <ul>
-                        <br>
-                        <li>
-                          <h4>Mean</h4>
-                          <p>The mean (or average) is the sum of all scores divided by the number of scores. Mathematically, for a dataset \(X\) with \(N\) values \(x_1, x_2, ..., x_N\), the mean \(\mu\) is given by:
-                            <br>
-                            \(\mu = \frac{1}{N}\sum_{i=1}^{N}x_i\).</p>
-                          <p>The mean is a fundamental concept in statistics and is used in a wide range of applications, from calculating average grades in a class to determining average income in a country.</p>
-                          <p>However, one of the limitations of the mean is its sensitivity to outliers. Extremely high or low values in the dataset can skew the mean, making it less representative of the "typical" value in the dataset. When reporting the mean, it's beneficial to also report the sample size and a measure of dispersion, typically the standard deviation (see below). This gives a better understanding of how spread out the data is around the mean. For example, "The mean age of the group is 30.5 years (n=10, SD=5.2 years)."</p>
-                        </li>                        
-                        <li>
-                          <br>
-                          <h4>Median</h4>
-                          <p>The median is another measure of central tendency, representing the middle value in an ordered dataset. If the dataset has an odd number of observations, the median is the middle value. If the dataset has an even number of observations, the median is the average of the two middle values.</p>
-                          <p>Unlike the mean, the median is not affected by outliers and thus provides a more robust measure of the "center" of the data for skewed distributions.</p>
-                          <p>When reporting the median, it's often useful to also report the interquartile range (IQR), which gives an idea of the spread of the middle 50% of the data. For instance, "The median age of the group is 25.5 years (IQR 23-28 years)."</p>
-                        <li>
-                          <br>
-                          <h4>Mode</h4>
-                          <p>The mode is the value that appears most frequently in a dataset. A dataset may have one mode (unimodal), more than one mode (multimodal), or no mode at all (amodal). The mode can be useful for identifying the most common value in a dataset, but it may not be representative of the dataset as a whole, especially for continuous data.</p>
-                          <p>When reporting the mode, it can be useful to also report the frequency of the mode, especially in a multimodal dataset. For instance, "The mode of the dataset is 29, which appears twice."</p>
-                          </li>
-                      </ul>
+                      <h3>Probability Distributions</h3>
+                      <p>Probability distributions describe the likelihood of different outcomes in an experiment or event. The most commonly used ones in inferential statistics are the normal distribution, the binomial distribution, and the Poisson distribution.</p>
+                      <br>
+                      <h4>Normal Distribution</h4>
+                      <p>The normal distribution, also known as the Gaussian distribution, is a probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean. The formula for the normal distribution is:</p>
+                      <p class="formula">\(f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</p>
+                      <p>where \(f(x)\) is the probability density function, \(\mu\) is the mean, \(\sigma\) is the standard deviation, and \(x\) is the random variable.</p>
+                      <br>
+                      <h4>Binomial Distribution</h4>
+                      <p>The binomial distribution is a discrete probability distribution of the number of successes in a sequence of n independent experiments. The formula for the binomial distribution is:</p>
+                      <p class="formula">\(P(X=k) = {n \choose k}p^k(1-p)^{n-k}\)</p>
+                      <p>where \(P(X=k)\) is the probability of \(k\) successes in \(n\) trials, \(p\) is the probability of success, and \({n \choose k}\) is the binomial coefficient.</p>
+                      <br>
+                      <h4>Poisson Distribution</h4>
+                      <p>The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space. The formula for the Poisson distribution is:</p>
+                      <p class="formula">\(P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\)</p>
+                      <p>where \(P(X=k)\) is the probability of \(k\) events occurring in the interval, \(\lambda\) is the rate parameter, and \(k!\) is the factorial of \(k\).</p>
                     </div>
                     <br>
                     <div class="text-box">
-                      <h3>Measures of Dispersion</h3>
-                      <ul>
-                        <br>
-                        <li>
-                          <h4>Range</h4>
-                        <p>The range is a measure of dispersion, representing the difference between the maximum and minimum values in a dataset. It is calculated as:</p>
-                        <p class="formula">\(\text{Range} = \text{Max}(X) - \text{Min}(X)\)</p>
-                        <p>The range provides a quick snapshot of the spread of the data, but it is sensitive to outliers and does not provide information about how the data is distributed around the center.</p>
-                        <p>When reporting the range, it's often useful to also report the minimum and maximum values. For instance, "The range of ages in the group is 69 years, with a minimum age of 21 years and a maximum age of 90 years."</p>
-                        <li>                 
-                        <li>
-                          <br>
-                          <h4>Variance</h4>
-                          <p>Variance is a measure of dispersion that indicates how far the values in a dataset are spread out from the mean. The variance \(s^2\) for a dataset \(X\) with \(N\) values and mean \(\mu\) is calculated as:</p>
-                          <p class="formula">\(s^2 = \frac{1}{N-1}\sum_{i=1}^{N}(x_i - \mu)^2\)</p>
-                          <p>The variance provides a measure of the "spread" of the data, but its units are the square of the original data units, which can be difficult to interpret. For example, if our dataset represents ages, the variance would be in "squared years," which doesn't have a clear real-world meaning.</p>
-                          <p>When reporting the variance, it's important to specify that it's the variance and to give the units. For instance, "The variance of ages in the group is 123.45 squared years."</p>                    
-                        </li>
-                        <li>
-                          <br>
-                          <h4>Standard Deviation</h4>
-                          <p>The standard deviation is the square root of the variance, providing a measure of dispersion in the same units as the original data. It is calculated as:</p>
-                          <p class="formula">\(s = \sqrt{s^2} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \mu)^2}\)</p>
-                          <p>The standard deviation provides a measure of the average distance of the data values from the mean. A small standard deviation indicates that the data points tend to be close to the mean, while a large standard deviation indicates that the data points are spread out over a wider range.</p>
-                          <p>When reporting the standard deviation, it's important to give the units. For instance, "The standard deviation of ages in the group is 5 years."</p>
-                        </li>
-                      </ul>
+                      <h3>Sampling Distributions</h3>
+                      <p>Sampling distributions describe the probability of different outcomes from a sample of data. The central limit theorem states that the sampling distribution of the mean approaches a normal distribution as the sample size increases, regardless of the shape of the population distribution.</p>
+                    </div>
+                    <br>
+                    <div class="text-box">
+                      <h4>Point Estimation</h4>
+                      <p>Point estimation involves using a single value to estimate the population parameter. The most commonly used point estimator is the sample mean, which is calculated using the formula:</p>
+                      <p class="formula">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i\)</p>
+                      <p>where \(\bar{x}\) is the sample mean, \(n\) is the sample size, and \(x_i\) are the individual values in the sample.</p>
+                      <br>
+                      <h4>Interval Estimation</h4>
+                      <p>Interval estimation involves using a range of values to estimate the population parameter. The most commonly used interval estimator is the confidence interval, which is calculated using the formula:</p>
+                      <p class="formula">\((\bar{x} - z_{\alpha/2}\frac{s}{\sqrt{n}}, \bar{x} + z_{\alpha/2}\frac{s}{\sqrt{n}})\)</p>
+                      <p>where \(\bar{x}\) is the sample mean, \(s\) is the sample standard deviation, \(n\) is the sample size, and \(z_{\alpha/2}\) is the critical value of the standard normal distribution for a given level of confidence \(\alpha\).</p>
+                    </div>
+                    <br>
+                    <div class="text-box">
+                      <h3>Hypothesis Testing</h3>
+                      <p>Hypothesis testing involves testing a hypothesis about a population parameter. The null hypothesis is the hypothesis that there is no difference between the sample and the population, while the alternative hypothesis is the hypothesis that there is a difference. The p-value is the probability of obtaining a sample statistic as extreme as the one observed, assuming that the null hypothesis is true.</p>
+                      <p>The most commonly used hypothesis test is the t-test, which is used to test the difference between two means. The formula for the t-test is:</p>
+                      <p class="formula">\(t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}\)</p>
+                      <p>where \(\bar{x}_1\) and \(\bar{x}_2\) are the sample means, \(s_p\) is the pooled standard deviation, \(n_1\) and \(n_2\) are the sample sizes, and \(t\) is the t-statistic.</p>
                     </div>
                     <br>
                     <hr>
@@ -234,17 +222,19 @@
                       <h5>References</h5>
                       <ul>
                         <li>
-                          <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Agresti, A., & Franklin, C. A. (2018). Statistics: The art and science of learning from data. Pearson.</p>
+                          <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Casella, G., & Berger, R. L. (2002). Statistical Inference. Duxbury Press.</p>
                         </li>
                         <li>
                           <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Eid, M., Gollwitzer, M., & Schmitt, M. (2017). Statistik und Forschungsmethoden: Lehrbuch. Mit Online-Material [Statistics and research methods: Textbook.</p>
                           <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With online material] (5th ed.). Beltz.</p>
                         </li>
                         <li>
-                          <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Gravetter, F. J., & Wallnau, L. B. (2017). Statistics for the behavioral sciences. Cengage Learning.</p>
+                          <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Navidi, W. (2014). Statistics for Engineers and Scientists. McGraw-Hill Education.</p>
+                        </li>
+                        <li>
+                          <p style="font-size: 0.8em;">&nbsp;&nbsp;&nbsp;Newbold, P., Carlson, W., & Thorne, B. (2019). Statistics for Business and Economics. Pearson.</p>
                         </li>
                       </ul>
-                    </div>                    
                     </div>
                   </div>
                 </div>
@@ -253,7 +243,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
+  </body>
+  
     <div class="footer">
      <p>
       Copyright © 2023 Selvastics. Made with &lt;3 and ☕ in Cologne, Germany. All Rights Reserved.
