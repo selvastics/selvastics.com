@@ -1454,9 +1454,14 @@ section.contact-us .right-info ul li span {
 heading page
 ---------------------------------------------
 */
+/*
+---------------------------------------------
+    image changes
+---------------------------------------------
+*/
 
 section.heading-page {
-  background-image: url(../images/can_1111.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-image: url(../images/can1.png), linear-gradient(to right, transparent, #5D5B79 1px);
   background-position: center center, center center;
   background-repeat: no-repeat;
   background-size: cover, cover;
@@ -1470,11 +1475,75 @@ section.heading-page {
     background-size: 1600px auto, 100% 100%;
   }
 }
+section.heading-page1 {
+  background-image: url(../images/can1.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  padding-top: 230px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+section.heading-page2 {
+  background-image: url(../images/can2.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  padding-top: 230px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+section.heading-page3 {
+  background-image: url(../images/can3.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  padding-top: 230px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+section.heading-page4 {
+  background-image: url(../images/can4.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  padding-top: 230px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+section.heading-page5 {
+  background-image: url(../images/can5.png), linear-gradient(to right, transparent, #5D5B79 1px);
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  background-size: cover, cover;
+  padding-top: 230px;
+  padding-bottom: 110px;
+  text-align: center;
+}
+
+@media screen and (min-width: 1600px) {
+  section.heading-page1,
+  section.heading-page2,
+  section.heading-page3,
+  section.heading-page4,
+  section.heading-page5 {
+    background-size: 1600px auto, 100% 100%;
+  }
+}
 
 
 
 
-section.heading-page h6 {
+section.heading-page h6,
+section.heading-page1 h6,
+section.heading-page2 h6,
+section.heading-page3 h6,
+section.heading-page4 h6,
+section.heading-page5 h6 {
   margin-top: 0px;
   font-size: 15px;
   text-transform: uppercase;
@@ -1482,8 +1551,12 @@ section.heading-page h6 {
   color: #fff;
   letter-spacing: 1px;
 }
-
-section.heading-page h2 {
+section.heading-page h2,
+section.heading-page1 h2,
+section.heading-page2 h2,
+section.heading-page3 h2,
+section.heading-page4 h2,
+section.heading-page5 h2 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 36px;
