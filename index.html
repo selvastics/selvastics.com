@@ -86,18 +86,31 @@
                   </a>
 
                   <style>
-                    @media (max-width: 500px) {
+                    @media (max-width: 660px) {
                       .logo-img {
-                        max-height: 15vw;
+                        max-height: 10vw !important; /* Overriding the inline style for medium screens */
+                      }
+                    }
+
+                    @media (max-width: 360px) {
+                      .logo-img {
+                        max-height: 8vw !important; /* Overriding the inline style for medium screens */
+                      }
+                    }
+
+                    @media (max-width: 300px) {
+                      .logo-img {
+                        max-height: 7vw !important; /* Overriding the inline style for medium screens */
                       }
                     }
                     
-                    @media (max-width: 300px) {
+                    @media (max-width: 250px) {
                       .logo-img {
-                        max-height: 1vw;
+                        max-height: 5vw !important; /* Overriding the inline style for medium screens */
                       }
                     }
-                  </style>
+
+                  </style>                
                   
                   <!-- ***** Logo End ***** -->
 
