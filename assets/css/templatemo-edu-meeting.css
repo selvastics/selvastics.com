@@ -271,8 +271,9 @@ header
 }
 
 .header-area {
-  background-color: rgba(250, 250, 250, 0.15);
+  background-color: rgb(255, 255, 255);
   position: absolute;
+  
   top: 40px;
   left: 0;
   right: 0;
@@ -337,7 +338,7 @@ header
   font-weight: 500;
   font-size: 14px;
   text-transform: uppercase;
-  color: #fff;
+  color: #000000;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
