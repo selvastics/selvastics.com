@@ -83,24 +83,37 @@
               <nav class="main-nav">
                   <!-- ***** Logo Start ***** -->
                   <a class="logo" href="index.html">
-                      <img class="logo-img" src="assets/images/selvastics_d.png" alt="Selvastics logo" style="max-height: 70px; width: auto;">
-                  </a>
+                    <img class="logo-img" src="assets/images/selvastics_d.png" alt="Selvastics logo" style="max-height: 70px; width: auto;">
+                </a>
 
-                  <style>
-                    @media (max-width: 500px) {
-                      .logo-img {
-                        max-height: 15vw;
-                      }
+                <style>
+                  @media (max-width: 660px) {
+                    .logo-img {
+                      max-height: 10vw !important; /* Overriding the inline style for medium screens */
                     }
-                    
-                    @media (max-width: 300px) {
-                      .logo-img {
-                        max-height: 1vw;
-                      }
+                  }
+
+                  @media (max-width: 360px) {
+                    .logo-img {
+                      max-height: 8vw !important; /* Overriding the inline style for medium screens */
                     }
-                  </style>
+                  }
+
+                  @media (max-width: 300px) {
+                    .logo-img {
+                      max-height: 7vw !important; /* Overriding the inline style for medium screens */
+                    }
+                  }
                   
-                  <!-- ***** Logo End ***** -->
+                  @media (max-width: 250px) {
+                    .logo-img {
+                      max-height: 5vw !important; /* Overriding the inline style for medium screens */
+                    }
+                  }
+
+                </style>                
+                
+                <!-- ***** Logo End ***** -->
 
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav" id="nav-menu">
