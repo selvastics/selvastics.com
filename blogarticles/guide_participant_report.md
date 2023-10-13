@@ -543,7 +543,7 @@ Nähere Informationen in "The Five-Factor Model of Personality: Theoretical Pers
 </script>
 ```
 
-## 4. Addressing common issues
+## 4 Addressing common issues
 This section aims to address common issues that may arise during the implementation of graphical feedback in SoSci Survey. It covers topics like error resolution, debugging, handling missing values, PDF formatting, and more. 
 
 ### Common errors and their resolutions
@@ -575,7 +575,7 @@ If one desires a comprehensive PDF file with all survey results, multiple pages 
 **Q: Can I include both a radar plot and a bar plot in the same PDF?**  
 **A:** Yes, it is possible to incorporate multiple plots within a single PDF. This can be achieved by creating separate canvas elements for each plot and rendering them individually. Be aware that this may require adjustments to the plot dimensions within the PDF or necessitate the creation of multiple PDF pages.
 
-**Q: Despite my efforts, my code still isn't working. What should I do?**  
+**Q: Despite my efforts, my code still is not working. What should I do?**  
 **A:** If troubleshooting proves ineffective, consider implementing the `.xml` file provided in the resource section and building your questionnaire from that foundation.
 
 **Q: The plot in my PDF file appears distorted. How can I rectify this?**  
@@ -587,14 +587,14 @@ If one desires a comprehensive PDF file with all survey results, multiple pages 
 
 
 
-## 5. Resources
+## 5 Resources
    - Complete sosci project (`full.xml` -file) 
    - BFI sosci page only (`page.xml` -file)
 
 You can download them [here](https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report)
 
 
-## 6. Additional examples
+## 6 Additional examples
 **Simple bar plot:**
 
 For PHP:
