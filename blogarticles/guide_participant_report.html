@@ -1,0 +1,904 @@
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <link rel="stylesheet" href="../assets/css/default.min.css">
+      <style>
+          body {
+              font-family:"Calibri", sans-serif;
+          }
+          .code-snippet {
+            position: relative;
+          }
+          .copy-code-button {
+            position: absolute;
+            top: 26px; 
+            right: 10px; 
+            background-color: #696969;
+            color: white;
+            border: none;
+            cursor: pointer;
+          }
+          pre.hljs code {
+            white-space: pre-wrap;
+          }
+
+          .button-icon {
+            width: 10px;
+           height: 10px;
+           background-color: white;
+
+           }
+    
+
+
+
+
+        </style>
+      </head>
+      <body>
+        <h1 id="how-to-provide-direct-feedback-on-survey-results-for-your-participants"><a class="markdownIt-Anchor" href="#how-to-provide-direct-feedback-on-survey-results-for-your-participants"></a> How to provide direct feedback on survey results for your participants</h1>
+<p><strong>Author</strong>: <a target="_blank" href="https://github.com/selvastics">Clievins Selva</a><br>
+<strong>Date</strong>: October 12, 2023<br>
+<strong>License</strong>: CC BY 4.0</p>
+<h2 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract</h2>
+<p>This article outlines the implementation of graphical feedback for participants using SoSci Survey. By leveraging HTML, CSS, and JavaScript, the survey conductor can display individual feedback for each participant, enhancing engagement and improving data quality. Two chart types, a bar plot and a radar plot, are discussed in detail. Additionally, a downloadable PDF feature that complies with the General Data Protection Regulation is also presented. For direct usage, a practical example is provided for implementing the Big Five Inventory.</p>
+<h2 id="1-foundational-concepts-and-theoretical-guidelines"><a class="markdownIt-Anchor" href="#1-foundational-concepts-and-theoretical-guidelines"></a> 1 Foundational concepts and theoretical guidelines</h2>
+<p>SoSci Survey is an online tool frequently used in academic research for creating surveys. It offers various features, including question branching, randomization, and multilingual support (SoSci Survey, n.d.). Beyond these functionalities, its capacity to integrate HTML, CSS, and JavaScript allows for the visualization of individual results for participants. This opens up the possibility of immediate feedback, a cornerstone of the learning process that has been studied extensively across fields like psychology, education, and human-computer interaction. Immediate feedback, anchored in constructivist learning theory, enhances the learning experience by allowing for the correction of errors and reinforcement of understanding. In the realm of online surveys, this can significantly augment participant engagement, thereby improving data quality and validity.</p>
+<p>However, the challenge often lies in reconciling the desire for immediate feedback with the need for participant anonymity and data protection, especially in the European context governed by the General Data Protection Regulation (GDPR). GDPR imposes stringent requirements on data collection and processing, advocating for data minimization and privacy by design (SoSci Survey, n.d.). These principles recommend that data should be processed locally on the client-side whenever possible. In the context of online surveys, this translates to enabling participants to download their results directly without the need for collecting personal identifiers like email addresses, thus adhering to GDPR guidelines.</p>
+<p>The choice of how to visually represent this immediate feedback is another critical consideration. While various chart types exist, this article focuses on bar plots and radar plots. Bar plots are particularly effective for straightforward comparisons of individual data points across categories, making them easily interpretable by participants. Radar plots, in contrast, are more suitable for representing multivariate data, allowing for the assessment of multiple variables at once. This makes them ideal for more complex data interpretations, such as presenting a participant's personality profile in the context of the Big Five Inventory (BFI).</p>
+<p>However, the principles and techniques discussed here can be adapted to numerous other types of charts. The <a target="_blank" href="https://r-graph-gallery.com/index.html">r-graph Gallery </a> provides numerous examples of how data can be plotted, offering a valuable resource for researchers looking to implement suiting graphical elements specific to their variables of interest. By combining the capabilities of SoSci Survey with GDPR-compliant methods and carefully selected chart types, researchers can offer participants immediate, meaningful, and secure feedback, thereby enriching the survey experience and potentially elevating the quality of the data collected.</p>
+<h2 id="2-technical-implementation"><a class="markdownIt-Anchor" href="#2-technical-implementation"></a> 2 Technical Implementation</h2>
+<h3 id="prerequisites"><a class="markdownIt-Anchor" href="#prerequisites"></a> Prerequisites</h3>
+<p>To execute the code samples in this article, I assume that you have an operational SoSci Survey project and are familiar with HTML, CSS, and JavaScript. For those not acquainted with these web technologies, I recommend importing the provided <code>.xml</code> file into SoSci Survey as a starting point for building your study.</p>
+<p>In the code, <code>%variable1%</code> and <code>%variable2%</code> act as placeholders; they will be replaced with the actual scores obtained from the survey participants. Likewise, <code>var_01</code> to <code>var_12</code> should be replaced with the specific variables you intend to use in your project. Note that the ensuing code examples serve as foundational templates for creating the chart.</p>
+<h3 id="21-calculation-of-participant-indices"><a class="markdownIt-Anchor" href="#21-calculation-of-participant-indices"></a> 2.1 Calculation of participant indices</h3>
+<p>In the PHP code section, I calculate two indices,<code>variable1</code> and <code>variable2</code>, by taking the mean of six distinct variables each. These calculated means are then formatted to one decimal place and are intended to be used in a chart. The code relies on a built-in function <code>valueMean()</code> to compute the average values.</p>
+<ol>
+<li>
+<p><strong>Calculating mean</strong>:
+For the first variable I use <code>var_01</code> to <code>var_06</code> and I use <code>var_07</code> to <code>var_12</code> to calculate <code>variable2</code>.</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_01&#x27;</span>, <span class="hljs-string">&#x27;var_02&#x27;</span>, <span class="hljs-string">&#x27;var_03&#x27;</span>, <span class="hljs-string">&#x27;var_04&#x27;</span>, <span class="hljs-string">&#x27;var_05&#x27;</span>, <span class="hljs-string">&#x27;var_06&#x27;</span>));
+<span class="hljs-variable">$variable2</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_07&#x27;</span>, <span class="hljs-string">&#x27;var_08&#x27;</span>, <span class="hljs-string">&#x27;var_09&#x27;</span>, <span class="hljs-string">&#x27;var_10&#x27;</span>, <span class="hljs-string">&#x27;var_11&#x27;</span>, <span class="hljs-string">&#x27;var_12&#x27;</span>));
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Debugging</strong>: The <code>debug($variable1)</code> and <code>debug($variable2)</code> lines are for debugging purposes, presumably printing the calculated mean values to the log.</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable1</span>);
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable2</span>);
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>String formatting and replacement</strong>: The <code>sprintf('%1.1f', $variable1)</code> and <code>sprintf('%1.1f', $variable2)</code> lines format the mean values to one decimal place. These formatted values replace <code>%variable1%</code> and <code>%variable2%</code>, which are placeholders likely used in a subsequent chart or report.</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable1</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable2%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable2</span>));
+</code></pre>
+</div></code></pre>
+</li>
+</ol>
+<h3 id="22-bar-plot-code-explanation"><a class="markdownIt-Anchor" href="#22-bar-plot-code-explanation"></a> 2.2 Bar plot: Code explanation</h3>
+<p>The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare <code>variable1</code> and <code>variable2</code> in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.</p>
+<ol>
+<li>
+<p><strong>Including Chart.js</strong>: The Chart.js library is included via a script tag, which is essential for rendering the chart.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Canvas element</strong>: A canvas element with the id <code>barChart</code> is created. This is where the chart will be rendered.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>JavaScript code</strong>: The main JavaScript code does the following:</p>
+<ul>
+<li><strong>Context retrieval</strong>: The context of the canvas is obtained using</li>
+</ul>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+</code></pre>
+</div></code></pre>
+<ul>
+<li><strong>Data and aesthetics</strong>: The <code>data</code> object contains labels (<code>variable1</code> and <code>variable2</code>) and datasets. The datasets have data points, background color, border color, and border width.</li>
+</ul>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-attr">data</span>: {
+  <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;variable1&#x27;</span>, <span class="hljs-string">&#x27;variable2&#x27;</span>],
+  <span class="hljs-attr">datasets</span>: [{
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>],
+    <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;rgba(178, 24, 43, 0.2)&#x27;</span>,
+    <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(178, 24, 43, 1)&#x27;</span>,
+    <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1.5</span>
+  }]
+}
+</code></pre>
+</div></code></pre>
+<ul>
+<li><strong>Options</strong>: One can set additional options like scales and plugins. Here, the Y-axis is limited to values between 1 and 7, and the legend is hidden.</li>
+</ul>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-attr">options</span>: {
+  <span class="hljs-attr">scales</span>: {
+    <span class="hljs-attr">y</span>: {
+      <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">max</span>: <span class="hljs-number">7</span>
+    }
+  },
+  <span class="hljs-attr">plugins</span>: {
+    <span class="hljs-attr">legend</span>: { <span class="hljs-attr">display</span>: <span class="hljs-literal">false</span> }
+  }
+}
+</code></pre>
+</div></code></pre>
+</li>
+</ol>
+<h3 id="further-customization-fine-tuning"><a class="markdownIt-Anchor" href="#further-customization-fine-tuning"></a> Further customization: Fine tuning</h3>
+<p>One can further customize the <code>backgroundColor</code>, <code>borderColor</code>, and <code>borderWidth</code> by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values. One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval).</p>
+<h3 id="23-radar-plot-code-explanation"><a class="markdownIt-Anchor" href="#23-radar-plot-code-explanation"></a> 2.3 Radar plot: Code explanation</h3>
+<p>Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%Variable1%</code> and <code>%Variable2%</code>) for plotting.</p>
+<ol>
+<li>
+<p><strong>Canvas element</strong>: Again, a canvas element with the id <code>radarChart</code> is defined. This serves as the rendering area for the radar chart.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radarChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>JavaScript context</strong>: The 2D rendering context of the canvas element is obtained, allowing drawing operations.</p>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;radarChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>JavaScript context</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%Variable1%</code> and <code>%Variable2%</code> are placeholders that would be replaced by actual values.</p>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;radar&#x27;</span>,
+  <span class="hljs-attr">data</span>: {
+    <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
+    <span class="hljs-attr">datasets</span>: [{
+      <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+    }]
+  }
+});
+</code></pre>
+</div></code></pre>
+</li>
+</ol>
+<h3 id="further-customization-norm-scores"><a class="markdownIt-Anchor" href="#further-customization-norm-scores"></a> Further customization: norm scores</h3>
+<p>Norm scores can be particularly useful for helping participants interpret their results. These are represented as an additional datasets on the radar chart, allowing for direct comparison between individual and normative data. Adaptations for other types of plots can be made in a similar fashion. An applied example using the Big Five Inventory is provided later in the article.</p>
+<h3 id="24-providing-a-downloadable-pdf"><a class="markdownIt-Anchor" href="#24-providing-a-downloadable-pdf"></a> 2.4 Providing a downloadable PDF</h3>
+<p>The provided HTML and JavaScript code snippet demonstrates the use of <code>jsPDF</code> and <code>html2canvas</code> libraries to enable a client-side PDF download of a rendered chart. A button is provided, and upon clicking it, the canvas containing the chart is converted to an image, which is then embedded into a PDF file. This explanation will discuss the inclusion of the required libraries, the button's functionality, and the JavaScript logic for converting the canvas to a PDF.</p>
+<ol>
+<li>
+<p><strong>Library inclusion</strong>: The <code>jsPDF</code> and <code>html2canvas</code> libraries are included to facilitate PDF creation and canvas-to-image conversion, respectively.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Download button</strong>: A simple HTML button with the id <code>downloadPdf</code> is added, which will trigger the PDF download when clicked.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;downloadPdf&quot;</span>&gt;</span>Download PDF<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+</li>
+<li>
+<p><strong>JavaScript logic</strong>: An event listener is attached to the button, and upon clicking, it performs the following operations:</p>
+<ul>
+<li>Calls <code>html2canvas</code> to convert the canvas element to a PNG image.</li>
+<li>Initializes a new <code>jsPDF</code> object.</li>
+<li>Adds the image to the PDF.</li>
+<li>Saves the PDF with the filename <code>download.pdf</code>.</li>
+</ul>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-title function_">html2canvas</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>), {
+    <span class="hljs-attr">onrendered</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">canvas</span>) {
+      <span class="hljs-keyword">var</span> imgData = canvas.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&#x27;image/png&#x27;</span>);
+      <span class="hljs-keyword">var</span> pdf = <span class="hljs-keyword">new</span> <span class="hljs-title function_">jsPDF</span>();
+      pdf.<span class="hljs-title function_">addImage</span>(imgData, <span class="hljs-string">&#x27;PNG&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+      pdf.<span class="hljs-title function_">save</span>(<span class="hljs-string">&#x27;download.pdf&#x27;</span>);
+    }
+  });
+});
+</code></pre>
+</div></code></pre>
+</li>
+</ol>
+<h2 id="3-practical-example-big-five-inventory-for-personality-assessment"><a class="markdownIt-Anchor" href="#3-practical-example-big-five-inventory-for-personality-assessment"></a> 3 Practical example: Big Five Inventory for personality assessment</h2>
+<p>The BFI is a widely recognized instrument for assessing five key dimensions of personality: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. For the purposes of this guide, I will focus on implementing the BFI based on the work of Rammstedt and colleagues (2018). This practical example demonstrates how participants can receive a PDF download after responding to BFI items on SoSci Survey.</p>
+<p>To implement the BFI in SoSci Survey, create a new questionnaire and add the BFI items as questions. Make sure to name the variables according to the following naming convention, as I will use these variable names in this code:</p>
+<ul>
+<li>Openness: <code>Offenheit</code></li>
+<li>Conscientiousness: <code>Gewissenhaftigkeit</code></li>
+<li>Extraversion: <code>Extraversion</code></li>
+<li>Agreeableness: <code>Vertraeglichkeit</code></li>
+<li>Neuroticism: <code>Neurotizismus</code></li>
+</ul>
+<p>The code assumes that there is a question category BF01 with individual item 1 to item 30, previous to the code implementation.</p>
+<p>As item 1,3,7,8,10,14,17,19,20,21,24,26,27,28 and 30 are reversed, we can either set these items as reversed items within sosci, or calculate the reversed score using the <code>value()</code> function to fetch the respondent's original score and then use the <code>put()</code> function to save the recalculated score into an internal variable. See the <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">SoSci Survey Guide</a> for detailed instructions for in-php reversing.
+In the following php code chunck, I calculate means for items that are reversed within sosci survey.</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
+<span class="hljs-comment">// Neurotizsmus</span>
+<span class="hljs-variable">$Neurotizismus</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;BF01_04&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_09&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_14&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_19&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_24&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_29&#x27;</span> 
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Neurotizismus</span>);
+
+<span class="hljs-comment">// Extraversion</span>
+<span class="hljs-variable">$Extraversion</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;BF01_01&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_06&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_11&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_16&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_21&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_26&#x27;</span>
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Extraversion</span>);
+
+<span class="hljs-comment">// Offenheit</span>
+<span class="hljs-variable">$Offenheit</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;BF01_05&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_10&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_15&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_20&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_25&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_30&#x27;</span> 
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Offenheit</span>);
+
+<span class="hljs-comment">// Vertraeglichkeit</span>
+<span class="hljs-variable">$Vertraeglichkeit</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;BF01_02&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_07&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_12&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_17&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_22&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_27&#x27;</span>  
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Vertraeglichkeit</span>);
+
+<span class="hljs-comment">// Gewissenhaftigkeit</span>
+<span class="hljs-variable">$Gewissenhaftigkeit</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;BF01_03&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_08&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_13&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_18&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_23&#x27;</span>, 
+<span class="hljs-string">&#x27;BF01_28&#x27;</span>  
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Gewissenhaftigkeit</span>);
+
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Neurotizismus%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Neurotizismus</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Extraversion%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Extraversion</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Offenheit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Offenheit</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Vertraeglichkeit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Vertraeglichkeit</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Gewissenhaftigkeit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Gewissenhaftigkeit</span>));
+
+
+<span class="hljs-variable">$facetten</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;Neurotizismus&#x27;</span>, <span class="hljs-string">&#x27;Extraversion&#x27;</span>, <span class="hljs-string">&#x27;Offenheit&#x27;</span>, <span class="hljs-string">&#x27;Vertraeglichkeit&#x27;</span>, <span class="hljs-string">&#x27;Gewissenhaftigkeit&#x27;</span>);
+</code></pre>
+</div></code></pre>
+<p>A limitation of the initial approach is that it presumes all participants provide valid responses to every item. However, one may wish to compute indices conditionally, for instance, only when all responses are present and valid. This alternative strategy sets an index to 0 if any of the items used to calculate the mean have an invalid response. An example demonstrating this approach is provided below, in which an invalid response is defined as a value less than or equal to 0.</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">// Neurotizismus</span>
+<span class="hljs-variable">$nitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_09&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_14&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_19&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_24&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_29&#x27;</span>));
+<span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$nitems</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$isValid</span>) {
+    <span class="hljs-variable">$Neurotizismus</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$nitems</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable">$Neurotizismus</span> = <span class="hljs-number">0</span>;
+}
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Neurotizismus</span>);
+
+<span class="hljs-comment">// Extraversion</span>
+<span class="hljs-variable">$eitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_11&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_16&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_21&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_26&#x27;</span>));
+<span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$eitems</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$isValid</span>) {
+    <span class="hljs-variable">$Extraversion</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$eitems</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable">$Extraversion</span> = <span class="hljs-number">0</span>;
+}
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Extraversion</span>);
+
+<span class="hljs-comment">// Offenheit</span>
+<span class="hljs-variable">$oitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_10&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_15&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_20&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_25&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_30&#x27;</span>));
+<span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$oitems</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$isValid</span>) {
+    <span class="hljs-variable">$Offenheit</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$oitems</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable">$Offenheit</span> = <span class="hljs-number">0</span>;
+}
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Offenheit</span>);
+
+<span class="hljs-comment">// Vertraeglichkeit</span>
+<span class="hljs-variable">$vitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_12&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_17&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_22&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_27&#x27;</span>));
+<span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$vitems</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$isValid</span>) {
+    <span class="hljs-variable">$Vertraeglichkeit</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$vitems</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable">$Vertraeglichkeit</span> = <span class="hljs-number">0</span>;
+}
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Vertraeglichkeit</span>);
+
+<span class="hljs-comment">// Gewissenhaftigkeit</span>
+<span class="hljs-variable">$gitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_08&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_13&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_18&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_23&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_28&#x27;</span>));
+<span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$gitems</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">break</span>;
+    }
+    <span class="hljs-variable">$sum</span> += <span class="hljs-variable">$value</span>;
+}
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$isValid</span>) {
+    <span class="hljs-variable">$Gewissenhaftigkeit</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$gitems</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable">$Gewissenhaftigkeit</span> = <span class="hljs-number">0</span>;
+}
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$Gewissenhaftigkeit</span>);
+
+
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Neurotizismus%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Neurotizismus</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Extraversion%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Extraversion</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Offenheit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Offenheit</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Vertraeglichkeit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Vertraeglichkeit</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%Gewissenhaftigkeit%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$Gewissenhaftigkeit</span>));
+
+
+<span class="hljs-variable">$facetten</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;Neurotizismus&#x27;</span>, <span class="hljs-string">&#x27;Extraversion&#x27;</span>, <span class="hljs-string">&#x27;Offenheit&#x27;</span>, <span class="hljs-string">&#x27;Vertraeglichkeit&#x27;</span>, <span class="hljs-string">&#x27;Gewissenhaftigkeit&#x27;</span>);
+</code></pre>
+</div></code></pre>
+<p>After implementing a suiting php calculation of indices, I proceed to implement the radar chat. In this example,  I create a radar chart featuring two datasets: one containing our previously calculated indices and another with specified norm scores.  These norm scores can be obtained from scholarly publications; in this case, I use data from a study by Rammstedt et al. (2018) with <em>N</em> = 1,338.</p>
+<p>Subsequent to the PHP-code, I implement the HTML-Code. The HTML-Code is seperated it into three parts for ease of explanation. It is crucial to note that all three parts must be included in a single, uninterrupted HTML block to accurately reproduce the results. The first part of this HTML code serves multiple functions: it facilitates the creation of the actual PDF file, displays a download button beneath the radar chart, and establishes the canvas for the plot. For better visibility, I configure the button to appear in bold and steelblue text.</p>
+<p><strong>Part1:</strong></p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Chart with Download Link<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+        <span class="hljs-comment">/* Make the button text bold */</span>
+        <span class="hljs-selector-id">#downloadPdf</span> {
+        <span class="hljs-attribute">font-weight</span>: bold;
+        <span class="hljs-attribute">color</span>: steelblue;
+
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;downloadPdf&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Download PDF<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span> 
+ 
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+<p><strong>Part2</strong>:</p>
+<p>Here, I add the real participant data and the specified norm scores on one single radar chart. Specifically, the second dataset used, is labeled <code>Normwerte</code> to plot <code>[2.74, 3.13, 3.27, 2.70, 2.70]</code> as fixed values. Additonally, the scale is set from 1 to 5 and label sizes are adjusted.</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code>//<span class="hljs-comment">&lt;!-- This should be below part 1  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-keyword">const</span> { jsPDF } = <span class="hljs-variable language_">window</span>.<span class="hljs-property">jspdf</span>;
+  <span class="hljs-keyword">const</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;myChart&#x27;</span>);
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;radar&#x27;</span>,
+    <span class="hljs-attr">data</span>: {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Neurotizismus&#x27;</span>, <span class="hljs-string">&#x27;Extraversion&#x27;</span>, <span class="hljs-string">&#x27;Offenheit&#x27;</span>, <span class="hljs-string">&#x27;Vertraeglichkeit&#x27;</span>, <span class="hljs-string">&#x27;Gewissenhaftigkeit&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        
+<span class="hljs-comment">//real data</span>
+<span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;individuelle Facettenausprägung&#x27;</span>,
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Neurotizismus%&#x27;</span>, <span class="hljs-string">&#x27;%Extraversion%&#x27;</span>, <span class="hljs-string">&#x27;%Offenheit%&#x27;</span>, <span class="hljs-string">&#x27;%Vertraeglichkeit%&#x27;</span>, <span class="hljs-string">&#x27;%Gewissenhaftigkeit%&#x27;</span>],
+    <span class="hljs-attr">fill</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">backgroundColor</span>: [
+      <span class="hljs-string">&#x27;rgba(153, 102, 255, 0.2)&#x27;</span>
+    ],
+    <span class="hljs-attr">borderColor</span>: [
+      <span class="hljs-string">&#x27;rgba(153, 102, 255, 1)&#x27;</span>
+    ],
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1.5</span>
+
+    }, {
+
+<span class="hljs-comment">//norm data</span>
+<span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Normwerte&#x27;</span>,
+        <span class="hljs-attr">data</span>: [<span class="hljs-number">2.74</span>,<span class="hljs-number">3.13</span>,<span class="hljs-number">3.27</span>,<span class="hljs-number">2.70</span>,<span class="hljs-number">2.70</span>],
+    <span class="hljs-attr">fill</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">backgroundColor</span>: [
+      <span class="hljs-string">&#x27;rgba(75, 192, 192, 0.2)&#x27;</span>
+    ],
+    <span class="hljs-attr">borderColor</span>: [
+      <span class="hljs-string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>
+    ],
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1.5</span>
+
+
+<span class="hljs-comment">//options</span>
+      }]
+    },
+    <span class="hljs-attr">options</span>: { 
+      <span class="hljs-attr">scales</span>: {
+        <span class="hljs-attr">r</span>: {
+          <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">max</span>: <span class="hljs-number">5</span>,
+          <span class="hljs-attr">pointLabels</span>: {
+            <span class="hljs-attr">font</span>: {
+              <span class="hljs-attr">size</span>: <span class="hljs-number">15</span>
+            }
+          },
+          <span class="hljs-attr">angleLines</span>: {
+            <span class="hljs-attr">display</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// Hide the lines connecting the center to the labels</span>
+          },
+          <span class="hljs-attr">ticks</span>: {
+            <span class="hljs-attr">stepSize</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// Set the step size for labels</span>
+            <span class="hljs-attr">callback</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">value, index, values</span>) {
+              <span class="hljs-comment">// Skip labels for specific values (e.g., 0) as 0 is not a real score (1-5)</span>
+              <span class="hljs-keyword">if</span> (value === <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+              }
+              <span class="hljs-keyword">return</span> value;
+            }
+          }
+        }
+      }
+    }
+  });
+</span></code></pre>
+</div></code></pre>
+<p><strong>Part3</strong>:</p>
+<p>In this segment of code, I write the PDF file and make it visually appealing. This involves incorporating various design elements such as headers, footers, lines, and textual content. I recommend including a brief explanation to guide participants in interpreting their results, highlighting the conditions and limitations of these interpretations. It is important to note that text sizes are specifically adjusted for this content.
+Should one wish to include different or additional blocks of text, further adjustments concerning text size, positioning, and other visual elements may be needed.</p>
+<pre><code class="language-javascript"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code>  <span class="hljs-comment">//&lt;!-- This should be below part 2  --&gt;</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">html2canvas</span>(ctx, {
+      <span class="hljs-attr">onrendered</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">canvas</span>) {
+        <span class="hljs-keyword">const</span> imgData = canvas.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&#x27;image/png&#x27;</span>, <span class="hljs-number">1.0</span>);
+        <span class="hljs-keyword">const</span> pdf = <span class="hljs-keyword">new</span> <span class="hljs-title function_">jsPDF</span>(<span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-string">&#x27;mm&#x27;</span>, <span class="hljs-string">&#x27;a4&#x27;</span>);
+        <span class="hljs-keyword">const</span> width = pdf.<span class="hljs-property">internal</span>.<span class="hljs-property">pageSize</span>.<span class="hljs-title function_">getWidth</span>();
+        <span class="hljs-keyword">const</span> imgWidth = width - <span class="hljs-number">40</span>;
+        <span class="hljs-keyword">const</span> imgHeight = (canvas.<span class="hljs-property">height</span> * imgWidth) / canvas.<span class="hljs-property">width</span>;
+
+        <span class="hljs-comment">// Add header</span>
+        pdf.<span class="hljs-title function_">setFontSize</span>(<span class="hljs-number">16</span>);
+        pdf.<span class="hljs-title function_">text</span>(<span class="hljs-string">&quot;Individuelle Auswertung&quot;</span>, <span class="hljs-number">105</span>, <span class="hljs-number">10</span>, { <span class="hljs-attr">align</span>: <span class="hljs-string">&#x27;center&#x27;</span> });
+        pdf.<span class="hljs-title function_">setDrawColor</span>(<span class="hljs-number">70</span>, <span class="hljs-number">130</span>, <span class="hljs-number">180</span>); <span class="hljs-comment">// Set color to steel blue</span>
+        pdf.<span class="hljs-title function_">setLineWidth</span>(<span class="hljs-number">0.5</span>);
+        pdf.<span class="hljs-title function_">line</span>(<span class="hljs-number">20</span>, <span class="hljs-number">12</span>, <span class="hljs-number">190</span>, <span class="hljs-number">12</span>);
+
+        <span class="hljs-comment">// Add header</span>
+        pdf.<span class="hljs-title function_">setFontSize</span>(<span class="hljs-number">12</span>);
+        pdf.<span class="hljs-title function_">text</span>(<span class="hljs-string">&quot;Untertitel&quot;</span>, width / <span class="hljs-number">2</span>, <span class="hljs-number">20</span>, { <span class="hljs-attr">align</span>: <span class="hljs-string">&#x27;center&#x27;</span> });
+
+        <span class="hljs-comment">// Add text element above the chart</span>
+        pdf.<span class="hljs-title function_">setFontSize</span>(<span class="hljs-number">10</span>);
+        <span class="hljs-keyword">const</span> text = 
+<span class="hljs-string">&quot;Im Folgenden werden Ihre Persönlichkeitsmessungen anhand der BIG-5 präsentiert. Die BIG-5 Persönlichkeiten sind ein Modell der Persönlichkeitspsychologie, das die fünf Hauptdimensionen der Persönlichkeit beschreibt. Diese Dimensionen werden als Neurotizismus, Extraversion, Offenheit für Erfahrungen, Verträglichkeit und Gewissenhaftigkeit bezeichnet. Zusammengenommen bilden diese fünf Dimensionen ein umfassendes Bild der Persönlichkeit einer Person und können helfen, Ihr Verhalten und Ihre Interaktionen mit anderen besser zu verstehen. Es ist wichtig zu beachten, dass die BIG-5 Persönlichkeiten keine festen Kategorien sind und dass jeder Mensch einzigartig ist und seine eigenen individuellen Eigenschaften und Charakterzüge hat. Eine Beschreibung zu den einzelnen Facetten findet sich am Ende der Seite. Vergleichsdaten liefert die Arbeit von Rammstedt und Kollegen (2018), welche die Persönlichkeitsausprägungen von 1.338 Personen überprüft haben.&quot;</span>;
+        <span class="hljs-keyword">const</span> lines = pdf.<span class="hljs-title function_">splitTextToSize</span>(text, <span class="hljs-number">180</span>);
+        <span class="hljs-keyword">const</span> x = (width - <span class="hljs-number">180</span>) / <span class="hljs-number">2</span>; <span class="hljs-comment">// Center the text block</span>
+        pdf.<span class="hljs-title function_">text</span>(lines, x, <span class="hljs-number">35</span>); <span class="hljs-comment">// Start the text at position (x, 35)</span>
+
+        <span class="hljs-comment">// Calculate the position of the image based on the length of the text</span>
+        <span class="hljs-keyword">const</span> imagePosition = <span class="hljs-number">35</span> + (lines.<span class="hljs-property">length</span> * <span class="hljs-number">5</span>);
+
+
+
+       <span class="hljs-comment">// Add the image</span>
+        pdf.<span class="hljs-title function_">addImage</span>(imgData, <span class="hljs-string">&#x27;PNG&#x27;</span>, (width - imgWidth * <span class="hljs-number">0.9</span>) / <span class="hljs-number">2</span>, imagePosition, imgWidth * <span class="hljs-number">0.9</span>, imgHeight * <span class="hljs-number">0.72</span>, <span class="hljs-string">&#x27;NONE&#x27;</span>, <span class="hljs-string">&#x27;FAST&#x27;</span>, <span class="hljs-number">0</span>, -imgHeight * <span class="hljs-number">0.2</span>);
+
+
+        <span class="hljs-comment">// Add construct definitions below the chart</span>
+        pdf.<span class="hljs-title function_">setFontSize</span>(<span class="hljs-number">9</span>);
+        <span class="hljs-keyword">const</span> textBelow = <span class="hljs-string">`
+**Neurotizismus: Diese Dimension beschreibt die Tendenz, emotional instabil und anfällig für Stress zu sein. Menschen mit hohem Neurotizismus sind empfindlich, ängstlich und unruhig. Sie neigen dazu, sich Sorgen zu machen und haben ein hohes Bedürfnis nach Sicherheit.
+
+**Extraversion: Diese Dimension beschreibt die Tendenz, aktiv und offen im sozialen Umgang zu sein. Menschen mit hoher Extraversion sind gesellig, energiegeladen und kontaktfreudig. Sie suchen die Gesellschaft anderer Menschen und genießen es, neue Leute kennenzulernen. Sie sind auch selbstbewusst und können ihre Meinungen offen äußern.
+
+**Offenheit für Erfahrungen: Diese Dimension bezieht sich auf die Bereitschaft, neue Ideen und Erfahrungen zu akzeptieren und zu suchen. Menschen mit hoher Offenheit sind neugierig, kreativ und abenteuerlustig. Sie sind offen für neue Erfahrungen und haben eine große Bandbreite an Interessen. Sie sind auch offen für komplexe Ideen und können flexibel denken.
+
+**Verträglichkeit: Diese Dimension bezieht sich auf die Fähigkeit, empathisch und kooperativ im sozialen Umgang zu sein. Menschen mit hoher Verträglichkeit sind freundlich, zuvorkommend und hilfsbereit. Sie sind auch geduldig und verstehen die Perspektiven anderer Menschen. Sie haben auch ein geringes Bedürfnis, andere zu kontrollieren oder zu manipulieren.
+
+**Gewissenhaftigkeit: Diese Dimension bezieht sich auf die Fähigkeit, sorgfältig und verantwortungsbewusst zu handeln. Menschen mit hoher Gewissenhaftigkeit sind organisiert, zuverlässig und diszipliniert. Sie planen ihre Zeit und ihre Aktivitäten sorgfältig und setzen sich Ziele, die sie erreichen wollen. Sie sind auch selbstkontrolliert und können ihre Impulse unter Kontrolle halten.
+
+Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical Perspectives&quot; von Paul T. Costa Jr. und Robert R. McCrae (1996), in der Zeitschrift Annual Review of Psychology.`</span>;
+
+   <span class="hljs-keyword">const</span> linesBelow = pdf.<span class="hljs-title function_">splitTextToSize</span>(textBelow, <span class="hljs-number">180</span>);
+   pdf.<span class="hljs-title function_">text</span>(linesBelow, x, imagePosition + imgHeight - <span class="hljs-number">57</span>);  <span class="hljs-comment">// Position below the image</span>
+
+
+    pdf.<span class="hljs-title function_">setDrawColor</span>(<span class="hljs-number">70</span>, <span class="hljs-number">130</span>, <span class="hljs-number">180</span>);  <span class="hljs-comment">// Set color to steel blue</span>
+    pdf.<span class="hljs-title function_">line</span>(<span class="hljs-number">20</span>, <span class="hljs-number">285</span>, <span class="hljs-number">190</span>, <span class="hljs-number">285</span>);  <span class="hljs-comment">// Draw line</span>
+    pdf.<span class="hljs-title function_">setFontSize</span>(<span class="hljs-number">6</span>);  <span class="hljs-comment">// Set font size</span>
+
+
+    <span class="hljs-comment">// Your footer text</span>
+    <span class="hljs-keyword">const</span> footerText = 
+<span class="hljs-string">`Dieses Dokument wurde automatisiert erstellt und entspricht den Datenschutzbestimmungen der DSGVO. Weder das Herunterladen des PDFs noch die gemachten Angaben können auf Ihre Person zurückgeführt werden. Es ist nicht möglich, dieses Dokument nachträglich anzufragen, da es nur während der Teilnahme an der Studie erstellt werden kann und auch nur von der befragten Person einsehbar ist.`</span>;
+
+    <span class="hljs-comment">// Split text to fit within page margins</span>
+    <span class="hljs-keyword">const</span> splitFooter = pdf.<span class="hljs-title function_">splitTextToSize</span>(footerText, <span class="hljs-number">140</span>);  <span class="hljs-comment">// 140 here means the text will wrap after reaching 140 units width</span>
+
+    <span class="hljs-comment">// Output the lines</span>
+    pdf.<span class="hljs-title function_">text</span>(splitFooter, pdf.<span class="hljs-property">internal</span>.<span class="hljs-property">pageSize</span>.<span class="hljs-title function_">getWidth</span>() / <span class="hljs-number">2</span>, <span class="hljs-number">287</span>, { <span class="hljs-attr">align</span>: <span class="hljs-string">&#x27;center&#x27;</span>, <span class="hljs-attr">maxWidth</span>: <span class="hljs-number">140</span> });
+
+    <span class="hljs-comment">// Output date and time</span>
+    pdf.<span class="hljs-title function_">text</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toLocaleString</span>(<span class="hljs-string">&#x27;de-DE&#x27;</span>), pdf.<span class="hljs-property">internal</span>.<span class="hljs-property">pageSize</span>.<span class="hljs-title function_">getWidth</span>() - <span class="hljs-number">40</span>, <span class="hljs-number">10</span>);
+
+        <span class="hljs-comment">// Save the PDF with the custom filename</span>
+        pdf.<span class="hljs-title function_">save</span>(<span class="hljs-string">&quot;Ihre Auswertungsergebnisse.pdf&quot;</span>);
+
+      }
+    });
+  });
+&lt;/script&gt;
+</code></pre>
+</div></code></pre>
+<h2 id="4-addressing-common-issues"><a class="markdownIt-Anchor" href="#4-addressing-common-issues"></a> 4. Addressing common issues</h2>
+<p>This section aims to address common issues that may arise during the implementation of graphical feedback in SoSci Survey. It covers topics like error resolution, debugging, handling missing values, PDF formatting, and more.</p>
+<h3 id="common-errors-and-their-resolutions"><a class="markdownIt-Anchor" href="#common-errors-and-their-resolutions"></a> Common errors and their resolutions</h3>
+<h4 id="not-all-scales-are-on-the-same-metric"><a class="markdownIt-Anchor" href="#not-all-scales-are-on-the-same-metric"></a> Not all scales are on the same metric</h4>
+<p>When dealing with multiple scales that are not on the same metric, one can either adjust them to a common metric manually or normalize the scales (see example section). This ensures that the graphical representation is not misleading.</p>
+<h4 id="debugging"><a class="markdownIt-Anchor" href="#debugging"></a> Debugging</h4>
+<p>Debugging in this context typically involves examining the PHP error logs and the JavaScript console for errors or warnings. Always ensure that PHP error reporting is enabled to catch and fix issues early.</p>
+<h4 id="missing-values"><a class="markdownIt-Anchor" href="#missing-values"></a> Missing values</h4>
+<p>One approach to handling missing values is to set conditional rules for index calculation. If a response is missing or invalid, the index could be set to 0 or the mean calculation skipped altogether.</p>
+<h4 id="plot-size-adjustment"><a class="markdownIt-Anchor" href="#plot-size-adjustment"></a> Plot size adjustment</h4>
+<p>If the plot appears too large in the PDF file, its dimensions can be adjusted in the Chart.js configuration options by setting the <code>height</code> and <code>width</code> properties.</p>
+<h4 id="changing-plot-types"><a class="markdownIt-Anchor" href="#changing-plot-types"></a> Changing plot types</h4>
+<p>To change the type of plot, one needs to modify the <code>type</code> property in the <a target="_blank" href="https://www.chartjs.org/docs/latest/samples/information.html">Chart.js </a> configuration. This will update the plot type for subsequent renderings.</p>
+<h4 id="extensive-pdf-file-with-all-results"><a class="markdownIt-Anchor" href="#extensive-pdf-file-with-all-results"></a> Extensive PDF file with all results</h4>
+<p>If one desires a comprehensive PDF file with all survey results, multiple pages will need to be created and written individually. This typically involves looping through each result set and adding it to a new PDF page.</p>
+<h3 id="faq-section"><a class="markdownIt-Anchor" href="#faq-section"></a> FAQ Section</h3>
+<p><strong>Q: I am encountering errors in my PHP code. How can I resolve them?</strong><br>
+<strong>A:</strong> Consult the PHP error logs for in-depth information regarding the errors. Make sure that error reporting is enabled in your PHP settings for a comprehensive diagnostic overview. Note that some error messages appearing below the PHP code box may be benign and can be overlooked; however, exercise caution when interpreting error messages.</p>
+<p><strong>Q: Can I include both a radar plot and a bar plot in the same PDF?</strong><br>
+<strong>A:</strong> Yes, it is possible to incorporate multiple plots within a single PDF. This can be achieved by creating separate canvas elements for each plot and rendering them individually. Be aware that this may require adjustments to the plot dimensions within the PDF or necessitate the creation of multiple PDF pages.</p>
+<p><strong>Q: Despite my efforts, my code still isn't working. What should I do?</strong><br>
+<strong>A:</strong> If troubleshooting proves ineffective, consider implementing the <code>.xml</code> file provided in the resource section and building your questionnaire from that foundation.</p>
+<p><strong>Q: The plot in my PDF file appears distorted. How can I rectify this?</strong><br>
+<strong>A:</strong> To correct distorted plot dimensions, modify the <code>height</code> and <code>width</code> properties in the Chart.js configuration settings.</p>
+<p><strong>Q: How can I contribute to this project?</strong><br>
+<strong>A:</strong> Contributions are welcome. Feel free to share your code examples and offer additional suggestions to enhance the project's utility.</p>
+<h2 id="5-resources"><a class="markdownIt-Anchor" href="#5-resources"></a> 5. Resources</h2>
+<ul>
+<li>Complete sosci project (<code>full.xml</code> -file)</li>
+<li>BFI sosci page only (<code>page.xml</code> -file)</li>
+</ul>
+<p>You can download them <a target="_blank" href="https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report">here</a></p>
+<h2 id="6-additional-examples"><a class="markdownIt-Anchor" href="#6-additional-examples"></a> 6. Additional examples</h2>
+<p><strong>Simple bar plot:</strong></p>
+<p>For PHP:</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
+<span class="hljs-comment">// variable1</span>
+<span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;var_01&#x27;</span>, 
+<span class="hljs-string">&#x27;var_02&#x27;</span>, 
+<span class="hljs-string">&#x27;var_03&#x27;</span>, 
+<span class="hljs-string">&#x27;var_04&#x27;</span>, 
+<span class="hljs-string">&#x27;var_05&#x27;</span>, 
+<span class="hljs-string">&#x27;var_06&#x27;</span> 
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable1</span>);
+
+<span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
+<span class="hljs-comment">// variable2</span>
+<span class="hljs-variable">$variable2</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
+<span class="hljs-string">&#x27;var_07&#x27;</span>, 
+<span class="hljs-string">&#x27;var_08&#x27;</span>, 
+<span class="hljs-string">&#x27;var_09&#x27;</span>, 
+<span class="hljs-string">&#x27;var_10&#x27;</span>, 
+<span class="hljs-string">&#x27;var_11&#x27;</span>, 
+<span class="hljs-string">&#x27;var_12&#x27;</span> 
+));
+<span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable2</span>);
+
+
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable1</span>));
+<span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable2%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable2</span>));
+</code></pre>
+</div></code></pre>
+<p>For HTML:</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the Chart.js library --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-comment">// Get the context of the canvas element</span>
+  <span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+
+  <span class="hljs-comment">// Create a new bar chart</span>
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
+    <span class="hljs-attr">data</span>: {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;variable1&#x27;</span>, <span class="hljs-string">&#x27;variable2&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>]
+        <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;rgba(178, 24, 43, 0.2)&#x27;</span>,
+        <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;rgba(178, 24, 43, 1)&#x27;</span>,
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1.5</span>
+      }]
+    },
+    <span class="hljs-attr">options</span>: {
+      <span class="hljs-attr">scales</span>: {
+        <span class="hljs-attr">y</span>: {
+          <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
+          <span class="hljs-attr">max</span>: <span class="hljs-number">7</span>
+        }
+      },
+      <span class="hljs-attr">plugins</span>: {
+        <span class="hljs-attr">legend</span>: { <span class="hljs-attr">display</span>: <span class="hljs-literal">false</span> }
+      }
+    }
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+<p><strong>Simple radar bar plot:</strong></p>
+<p>For HTML (PHP-code for the simple radar plot is idential to PHP-code of the simple bar plot):</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radarChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-comment">// Get the context of the canvas element</span>
+  <span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;radarChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+
+  <span class="hljs-comment">// Create a new radar chart</span>
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;radar&#x27;</span>,
+    <span class="hljs-attr">data</span>: {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+      }]
+    }
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+<p><strong>Download any plot as PDF:</strong></p>
+<p>For HTML:</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the jsPDF and html2canvas libraries --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Add a button for downloading PDF --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;downloadPdf&quot;</span>&gt;</span>Download PDF<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-comment">// Add event listener for the button</span>
+  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-title function_">html2canvas</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>), {
+      <span class="hljs-attr">onrendered</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">canvas</span>) {
+        <span class="hljs-keyword">var</span> imgData = canvas.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&#x27;image/png&#x27;</span>);
+        <span class="hljs-keyword">var</span> pdf = <span class="hljs-keyword">new</span> <span class="hljs-title function_">jsPDF</span>();
+        pdf.<span class="hljs-title function_">addImage</span>(imgData, <span class="hljs-string">&#x27;PNG&#x27;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+        pdf.<span class="hljs-title function_">save</span>(<span class="hljs-string">&#x27;download.pdf&#x27;</span>);
+      }
+    });
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+<p><strong>Multiple bar plot with normalization:</strong></p>
+<p>For PHP:</p>
+<pre><code class="language-php"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">// Initialize arrays for scale ranges</span>
+<span class="hljs-variable">$scale_ranges</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">&#x27;Achtsamkeit&#x27;</span> =&gt; <span class="hljs-number">4</span>,
+    <span class="hljs-string">&#x27;Lebenszufriedenheit&#x27;</span> =&gt; <span class="hljs-number">7</span>,
+    <span class="hljs-string">&#x27;Prokastination&#x27;</span> =&gt; <span class="hljs-number">4</span>,
+    <span class="hljs-string">&#x27;Selbstwirksamkeit&#x27;</span> =&gt; <span class="hljs-number">4</span>,
+    <span class="hljs-string">&#x27;PolitischeSelbstwirksamkeit&#x27;</span> =&gt; <span class="hljs-number">7</span>,
+    <span class="hljs-string">&#x27;BerufsUndOrganisationsklima&#x27;</span> =&gt; <span class="hljs-number">6</span>
+);
+
+<span class="hljs-comment">// Initialize arrays for values of each scale</span>
+<span class="hljs-variable">$scale_values</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">&#x27;Achtsamkeit&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_08&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_09&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_10&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_11&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_12&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_13&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA07_14&#x27;</span>)),
+    <span class="hljs-string">&#x27;Lebenszufriedenheit&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA01_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA01_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA01_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA01_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA01_05&#x27;</span>)),
+    <span class="hljs-string">&#x27;Prokastination&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_08&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA09_09&#x27;</span>)),
+    <span class="hljs-string">&#x27;Selbstwirksamkeit&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_08&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_09&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA10_10&#x27;</span>)),
+    <span class="hljs-string">&#x27;PolitischeSelbstwirksamkeit&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_08&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_09&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA02_10&#x27;</span>)),
+    <span class="hljs-string">&#x27;BerufsUndOrganisationsklima&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_01&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_02&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_03&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_05&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_06&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_07&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;VA08_08&#x27;</span>))
+);
+
+<span class="hljs-comment">// Loop through each scale and its values</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$scale_values</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$scale</span> =&gt; <span class="hljs-variable">$values</span>) {
+    <span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable">$count</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$values</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$value</span> &gt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-variable">$sum</span> += (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$value</span>; <span class="hljs-comment">// Cast to int to avoid operand type issues</span>
+            <span class="hljs-variable">$count</span>++;
+        }
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$count</span> &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-variable">$mean</span> = <span class="hljs-variable">$sum</span> / <span class="hljs-variable">$count</span>;
+        <span class="hljs-comment">// Normalize the mean</span>
+        <span class="hljs-variable">$normalized_mean</span> = (<span class="hljs-variable">$mean</span> - <span class="hljs-number">1</span>) / (<span class="hljs-variable">$scale_ranges</span>[<span class="hljs-variable">$scale</span>] - <span class="hljs-number">1</span>);
+        <span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%&#x27;</span> . <span class="hljs-variable">$scale</span> . <span class="hljs-string">&#x27;%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$normalized_mean</span>));
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%&#x27;</span> . <span class="hljs-variable">$scale</span> . <span class="hljs-string">&#x27;%&#x27;</span>, <span class="hljs-string">&#x27;NaN&#x27;</span>);
+    }
+}
+</code></pre>
+</div></code></pre>
+<p>For HTML:</p>
+<pre><code class="language-html"><div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the Chart.js library --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-comment">// Get the context of the canvas element</span>
+  <span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+
+  <span class="hljs-comment">// Create a new bar chart</span>
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
+    <span class="hljs-attr">data</span>: {
+      <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Achtsamkeit&#x27;</span>, <span class="hljs-string">&#x27;Lebenszufriedenheit&#x27;</span>, <span class="hljs-string">&#x27;Prokastination&#x27;</span>, <span class="hljs-string">&#x27;Selbstwirksamkeit&#x27;</span>, <span class="hljs-string">&#x27;Politische Selbstwirksamkeit&#x27;</span>, <span class="hljs-string">&#x27;Berufs- und Organisationsklima&#x27;</span>],
+      <span class="hljs-attr">datasets</span>: [{
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Achtsamkeit%&#x27;</span>, <span class="hljs-string">&#x27;%Lebenszufriedenheit%&#x27;</span>, <span class="hljs-string">&#x27;%Prokastination%&#x27;</span>, <span class="hljs-string">&#x27;%Selbstwirksamkeit%&#x27;</span>, <span class="hljs-string">&#x27;%PolitischeSelbstwirksamkeit%&#x27;</span>, <span class="hljs-string">&#x27;%BerufsUndOrganisationsklima%&#x27;</span>],
+        <span class="hljs-attr">fill</span>: <span class="hljs-literal">true</span>,
+<span class="hljs-attr">backgroundColor</span>: [
+  <span class="hljs-string">&#x27;rgba(178, 24, 43, 0.2)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(33, 102, 172, 0.2)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(0, 128, 0, 0.2)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(255, 0, 0, 0.2)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(255, 127, 0, 0.2)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(106, 61, 154, 0.2)&#x27;</span>
+],
+<span class="hljs-attr">borderColor</span>: [
+  <span class="hljs-string">&#x27;rgba(178, 24, 43, 1)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(33, 102, 172, 1)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(0, 128, 0, 1)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(255, 0, 0, 1)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(255, 127, 0, 1)&#x27;</span>,
+  <span class="hljs-string">&#x27;rgba(106, 61, 154, 1)&#x27;</span>
+        ],
+        <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1.5</span>
+      }]
+    },
+    <span class="hljs-attr">options</span>: {
+      <span class="hljs-attr">scales</span>: {
+        <span class="hljs-attr">x</span>: {
+          <span class="hljs-attr">ticks</span>: {
+            <span class="hljs-attr">maxRotation</span>: <span class="hljs-number">45</span>,
+            <span class="hljs-attr">minRotation</span>: <span class="hljs-number">45</span>
+          }
+        },
+        <span class="hljs-attr">y</span>: {
+          <span class="hljs-attr">min</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">max</span>: <span class="hljs-number">1</span>,
+          <span class="hljs-attr">pointLabels</span>: {
+            <span class="hljs-attr">font</span>: {
+              <span class="hljs-attr">size</span>: <span class="hljs-number">18</span>
+            }
+          }
+        }
+      },
+      <span class="hljs-attr">plugins</span>: {
+        <span class="hljs-attr">legend</span>: {
+          <span class="hljs-attr">display</span>: <span class="hljs-literal">false</span>
+        }
+      }
+    }
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</div></code></pre>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p>r-graph Gallery. (n.d.). Retrieved from <a target="_blank" href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></p>
+<p>SoSci Survey. (n.d.). Features. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/en/features">https://www.soscisurvey.de/en/features</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Correct. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct">https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Visual. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual">https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</a></p>
+<p>SoSci Survey. (n.d.). Creating Layout. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/de:create:layout">https://www.soscisurvey.de/help/doku.php/de:create:layout</a></p>
+<p>SoSci Survey. (n.d.). Creating Questions: Scale - Inverting Items. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items</a></p>
+<p>Chart.js. (n.d.). Samples. Retrieved from <a target="_blank" href="https://www.chartjs.org/docs/latest/samples/information.html">https://www.chartjs.org/docs/latest/samples/information.html</a></p>
+<p>Rammstedt, B., Lechner, C. M., &amp; Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. <em>Journal of Intelligence, 6</em>(2), 28. <a target="_blank" href="https://doi.org/10.1027/1015-5759/a000481">https://doi.org/10.1027/1015-5759/a000481</a></p>
+
+      <script>
+      async function copyCodeToClipboard(element) {
+        const codeElement = element.nextElementSibling.querySelector('code');
+        const code = codeElement.innerText;
+        try {
+          await navigator.clipboard.writeText(code);
+          element.innerHTML = 'Copied';
+          setTimeout(() => {
+            element.innerHTML = '<img src=\"../assets/images/clipicon.png\" alt=\"Copy Code\" class="button-icon"> Copy Code';
+          }, 3000);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+      }
+      </script></body>
+      </html>
+      
