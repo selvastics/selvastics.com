@@ -142,7 +142,3 @@ fs.readdir(dirPath, (err, files) => {
   });
 });
 
-
-
-
-
