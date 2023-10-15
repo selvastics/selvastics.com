@@ -205,14 +205,16 @@
                     <iframe id="myIframe" src="blogarticles/guide_participant_report.html" 
                     scrolling = no style="height:200px;width:100%;border:none;overflow:hidden;">
             </iframe>
-            <script>
-window.addEventListener("message", function(event) {
-  if (event.data["function"] === "adjustHeight") {
-    const iframe = document.getElementById("myIframe");
-    iframe.style.height = event.data.height + "px";
-  }
-}, false);
 
+            <script>
+                window.onload = function() {
+                  window.addEventListener("message", function(event) {
+                   if (event.data["function"] === "adjustHeight") {
+                    const iframe = document.getElementById("myIframe");
+                    iframe.style.height = event.data.height + "px";
+                     }
+                   }, false);
+                };
             </script>
       
                   </div>
