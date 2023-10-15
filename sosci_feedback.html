@@ -207,14 +207,39 @@
             </iframe>
 
             <script>
-                window.onload = function() {
-                  window.addEventListener("message", function(event) {
-                   if (event.data["function"] === "adjustHeight") {
-                    const iframe = document.getElementById("myIframe");
-                    iframe.style.height = event.data.height + "px";
-                     }
-                   }, false);
-                };
+              window.onload = function() {
+  let intervalId;
+  let attempts = 0;
+  const lastReloadTime = sessionStorage.getItem("lastReloadTime") || 0;
+
+  // Only proceed if enough time has elapsed since the last reload
+  if (Date.now() - lastReloadTime > 2000) {
+    const checkCondition = function() {
+      attempts++;
+      const condition = window.someGlobalVariableSetBySecondScript;
+
+      if (condition || attempts > 10) {
+        clearInterval(intervalId);  // Stop the interval
+
+        if (condition) {
+          sessionStorage.setItem("lastReloadTime", Date.now());
+          location.reload(true);
+        }
+      }
+    };
+
+    intervalId = setInterval(checkCondition, 500);
+  }
+
+  window.addEventListener("message", function(event) {
+    if (event.data["function"] === "adjustHeight") {
+      const iframe = document.getElementById("myIframe");
+      iframe.style.height = event.data.height + "px";
+    }
+  }, false);
+};
+
+
             </script>
       
                   </div>
