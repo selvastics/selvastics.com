@@ -24,15 +24,11 @@ return `<div class="code-snippet">
               <pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>
             </div>`;
   }
-
-  
 }).use(mdTocAndAnchor, {
   tocClassName: 'toc',
   anchorLink: true,
   anchorLinkSymbol: ''
 });
-
-
 
 const dirPath = 'blogarticles';
 fs.readdir(dirPath, (err, files) => {
@@ -76,12 +72,10 @@ fs.readdir(dirPath, (err, files) => {
            background-color: white;
 
            }
-
-           .code-snippet {
-            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
-          }
     
-          
+
+
+
 
         </style>
       </head>
@@ -119,24 +113,6 @@ fs.readdir(dirPath, (err, files) => {
       styledHtmlContent = styledHtmlContent.replace(/<a href="#/g, `<a href="readme.html#`);
 
       const newFilePath = path.join(dirPath, `${path.basename(file, '.md')}.html`);
-
-
-      styledHtmlContent += `<script>
-      window.onload = function() {
-        window.parent.postMessage(
-          {"function": "adjustHeight", "height": document.body.scrollHeight + 20},
-          "*");
-      };
-      
-      window.addEventListener("message", function(event) {
-        if (event.data["function"] === "adjustHeight") {
-          const iframe = document.getElementById("myIframe");
-          iframe.style.height = event.data.height + "px";
-        }
-      }, false);
-    </script>`;
-    
-
       fs.writeFileSync(newFilePath, styledHtmlContent);
     }
   });

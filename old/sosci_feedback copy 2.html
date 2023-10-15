@@ -201,21 +201,49 @@
               <div class="col-lg-12">
                 <div class="meeting-single-item">
                   <div class="down-content" style="border-top-left-radius: 20px; border-top-right-radius: 20px; position: relative;">
-
-                    <iframe id="myIframe" src="blogarticles/guide_participant_report.html" 
-                    scrolling = no style="height:200px;width:100%;border:none;overflow:hidden;">
-            </iframe>
-            <script>
-window.addEventListener("message", function(event) {
-  if (event.data["function"] === "adjustHeight") {
-    const iframe = document.getElementById("myIframe");
-    iframe.style.height = event.data.height + "px";
-  }
-}, false);
-
-            </script>
-      
+                    <style>
+                      .iframe-embed {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        height: 100%;
+                        width: 100%;
+                        border: 0;
+                      }
+                      .iframe-embed-wrapper {
+                        position: relative;
+                        display: block;
+                        padding: 0;
+                        overflow: hidden;
+                      }
+                      .iframe-embed-responsive-16by9 {
+                        padding-bottom: 1700%;
+                      }
+                    </style>
+                
+                    <div class="iframe-embed-wrapper iframe-embed-responsive-16by9">
+                      <iframe class="iframe-embed" src="blogarticles/guide_participant_report.html" scrolling="no" onload="adjustWrapperHeight(this);"></iframe>
+                    </div>
+                
+                    <script>
+                      function adjustWrapperHeight(iframe) {
+                        const newHeight = iframe.contentWindow.document.body.scrollHeight;
+                        const wrapper = iframe.parentElement;
+                
+                        // Set the height of the wrapper to match the content of the iframe
+                        wrapper.style.height = newHeight + 'px';
+                
+                        // Explicitly set padding-bottom to 0 to remove any additional length
+                        wrapper.style.paddingBottom = '0px';
+                
+                        // Override the class that initially sets the padding-bottom
+                        wrapper.classList.remove('iframe-embed-responsive-16by9');
+                      }
+                    </script>
                   </div>
+                
+                  
                 </div>
               </div>
             </div>

@@ -29,10 +29,12 @@
            background-color: white;
 
            }
+
+           .code-snippet {
+            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
+          }
     
-
-
-
+          
 
         </style>
       </head>
@@ -195,7 +197,7 @@
 <p>One can further customize the <code>backgroundColor</code>, <code>borderColor</code>, and <code>borderWidth</code> by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values.
 One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval)</p>
 <h3 id="radar-plot-code-explanation"><a class="markdownIt-Anchor" href="#radar-plot-code-explanation"></a> Radar Plot: Code Explanation</h3>
-<p>The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%Variable1%</code> and <code>%Variable2%</code>) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.</p>
+<p>The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%variable1%</code> and <code>%variable2%</code>) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.</p>
 <ol>
 <li>
 <p><strong>Canvas Element</strong>: Similar to the bar chart, a canvas element with the id <code>radarChart</code> is defined. This serves as the rendering area for the radar chart.</p>
@@ -214,7 +216,7 @@ One can also include error bars (represented as Standard deviation, Standard err
 </div></code></pre>
 </li>
 <li>
-<p><strong>Radar Chart Creation</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%Variable1%</code> and <code>%Variable2%</code> are placeholders that would be replaced by actual values.</p>
+<p><strong>Radar Chart Creation</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%variable1%</code> and <code>%variable2%</code> are placeholders that would be replaced by actual values.</p>
 <pre><code class="language-javascript"><div class="code-snippet">
   <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
   <pre class="hljs"><code><span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
@@ -222,7 +224,7 @@ One can also include error bars (represented as Standard deviation, Standard err
   <span class="hljs-attr">data</span>: {
     <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
     <span class="hljs-attr">datasets</span>: [{
-      <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+      <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>]
     }]
   }
 });
@@ -784,7 +786,7 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
     <span class="hljs-attr">data</span>: {
       <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
       <span class="hljs-attr">datasets</span>: [{
-        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>]
       }]
     }
   });
@@ -837,4 +839,17 @@ https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</p>
       }
       </script></body>
       </html>
+      <script>
+      window.onload = function() {
+        window.parent.postMessage(
+          {"function": "adjustHeight", "height": document.body.scrollHeight + 20},
+          "*");
+      };
       
+      window.addEventListener("message", function(event) {
+        if (event.data["function"] === "adjustHeight") {
+          const iframe = document.getElementById("myIframe");
+          iframe.style.height = event.data.height + "px";
+        }
+      }, false);
+    </script>

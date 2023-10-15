@@ -24,13 +24,12 @@ return `<div class="code-snippet">
               <pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>
             </div>`;
   }
-
-  
 }).use(mdTocAndAnchor, {
   tocClassName: 'toc',
   anchorLink: true,
   anchorLinkSymbol: ''
 });
+
 
 
 
@@ -76,12 +75,10 @@ fs.readdir(dirPath, (err, files) => {
            background-color: white;
 
            }
-
-           .code-snippet {
-            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
-          }
     
-          
+
+
+
 
         </style>
       </head>

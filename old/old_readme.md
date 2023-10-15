@@ -156,7 +156,7 @@ You can also include error bars (represented as Standard deviation, Standard err
 
 ### Radar Plot: Code Explanation
 
-The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: `Label1` and `Label2`, and uses two variables (`%Variable1%` and `%Variable2%`) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.
+The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: `Label1` and `Label2`, and uses two variables (`%variable1%` and `%variable2%`) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.
 
 1. **Canvas Element**: Similar to the bar chart, a canvas element with the id `radarChart` is defined. This serves as the rendering area for the radar chart.
     ```html
@@ -168,14 +168,14 @@ The code snippet is a straightforward implementation of a radar chart using the 
     var ctx = document.getElementById('radarChart').getContext('2d');
     ```
 
-3. **Radar Chart Creation**: A new Chart object is instantiated with the type set to `radar`. The data object contains labels and datasets, where `%Variable1%` and `%Variable2%` are placeholders that would be replaced by actual values.
+3. **Radar Chart Creation**: A new Chart object is instantiated with the type set to `radar`. The data object contains labels and datasets, where `%variable1%` and `%variable2%` are placeholders that would be replaced by actual values.
     ```javascript
     new Chart(ctx, {
       type: 'radar',
       data: {
         labels: ['Label1', 'Label2'],
         datasets: [{
-          data: ['%Variable1%', '%Variable2%']
+          data: ['%variable1%', '%variable2%']
         }]
       }
     });
@@ -758,7 +758,7 @@ replace('%variable2%', sprintf('%1.1f', $variable2));
     data: {
       labels: ['Label1', 'Label2'],
       datasets: [{
-        data: ['%Variable1%', '%Variable2%']
+        data: ['%variable1%', '%variable2%']
       }]
     }
   });

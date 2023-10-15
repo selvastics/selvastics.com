@@ -30,7 +30,7 @@ In the code, `%variable1%` and `%variable2%` act as placeholders; they will be r
 In the PHP code section, I calculate two indices,`variable1` and `variable2`, by taking the mean of six distinct variables each. These calculated means are then formatted to one decimal place and are intended to be used in a chart. The code relies on a built-in function `valueMean()` to compute the average values.
 
 1. **Calculating mean**: 
-For the first variable I use `var_01` to `var_06` and I use `var_07` to `var_12` to calculate `variable2`.
+For the first variable `variable1`is calculated using `var_01` to `var_06` and for `variable2`, `var_07` to `var_12` is used.
     ```php
     $variable1= valueMean(array('var_01', 'var_02', 'var_03', 'var_04', 'var_05', 'var_06'));
     $variable2= valueMean(array('var_07', 'var_08', 'var_09', 'var_10', 'var_11', 'var_12'));
@@ -50,7 +50,7 @@ For the first variable I use `var_01` to `var_06` and I use `var_07` to `var_12`
     ```
 
 ### 2.2 Bar plot: Code explanation
- The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare `variable1` and `variable2` in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.
+ The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare the previously calculated `variable1` and `variable2` in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.
 
 1. **Including Chart.js**: The Chart.js library is included via a script tag, which is essential for rendering the chart.
     ```html
@@ -69,10 +69,10 @@ For the first variable I use `var_01` to `var_06` and I use `var_07` to `var_12`
     var ctx = document.getElementById('barChart').getContext('2d');
     ```
 
-    - **Data and aesthetics**: The `data` object contains labels (`variable1` and `variable2`) and datasets. The datasets have data points, background color, border color, and border width.
+    - **Data and aesthetics**: The `data` object contains labels ('Label1' and 'Label2') and datasets. The datasets have data points, background color, border color, and border width.
     ```javascript
     data: {
-      labels: ['variable1', 'variable2'],
+      labels: ['Label1', 'Label2'],
       datasets: [{
         data: ['%variable1%', '%variable2%'],
         backgroundColor: 'rgba(178, 24, 43, 0.2)',
@@ -101,7 +101,7 @@ For the first variable I use `var_01` to `var_06` and I use `var_07` to `var_12`
 One can further customize the `backgroundColor`, `borderColor`, and `borderWidth` by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values. One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval). 
 
 ### 2.3 Radar plot: Code explanation
-Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: `Label1` and `Label2`, and uses two variables (`%Variable1%` and `%Variable2%`) for plotting. 
+Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: `Label1` and `Label2`, and uses two variables (`%variable1%` and `%variable2%`) for plotting. 
 
 1. **Canvas element**: Again, a canvas element with the id `radarChart` is defined. This serves as the rendering area for the radar chart.
     ```html
@@ -113,14 +113,14 @@ Similar to the previous chart, this code snippet implements the Chart.js library
     var ctx = document.getElementById('radarChart').getContext('2d');
     ```
 
-3. **JavaScript context**: A new Chart object is instantiated with the type set to `radar`. The data object contains labels and datasets, where `%Variable1%` and `%Variable2%` are placeholders that would be replaced by actual values.
+3. **JavaScript context**: A new Chart object is instantiated with the type set to `radar`. The data object contains labels and datasets, where `%variable1%` and `%variable2%` are placeholders that would be replaced by actual values.
     ```javascript
     new Chart(ctx, {
       type: 'radar',
       data: {
         labels: ['Label1', 'Label2'],
         datasets: [{
-          data: ['%Variable1%', '%Variable2%']
+          data: ['%variable1%', '%variable2%']
         }]
       }
     });
@@ -589,7 +589,7 @@ If one desires a comprehensive PDF file with all survey results, multiple pages 
 
 ## 5 Resources
    - Complete sosci project (`full.xml` -file) 
-   - BFI sosci page only (`page.xml` -file)
+   - BFI page only (`page.xml` -file)
 
 You can download them [here](https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report)
 
@@ -684,7 +684,7 @@ For HTML (PHP-code for the simple radar plot is idential to PHP-code of the simp
     data: {
       labels: ['Label1', 'Label2'],
       datasets: [{
-        data: ['%Variable1%', '%Variable2%']
+        data: ['%variable1%', '%variable2%']
       }]
     }
   });
@@ -724,6 +724,7 @@ For HTML:
 For PHP:
 ```php
 // Initialize arrays for scale ranges
+// Here I specify the length of each scale
 $scale_ranges = array(
     'Achtsamkeit' => 4,
     'Lebenszufriedenheit' => 7,

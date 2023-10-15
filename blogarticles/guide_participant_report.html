@@ -29,10 +29,12 @@
            background-color: white;
 
            }
+
+           .code-snippet {
+            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
+          }
     
-
-
-
+          
 
         </style>
       </head>
@@ -57,7 +59,7 @@
 <ol>
 <li>
 <p><strong>Calculating mean</strong>:
-For the first variable I use <code>var_01</code> to <code>var_06</code> and I use <code>var_07</code> to <code>var_12</code> to calculate <code>variable2</code>.</p>
+For the first variable <code>variable1</code>is calculated using <code>var_01</code> to <code>var_06</code> and for <code>variable2</code>, <code>var_07</code> to <code>var_12</code> is used.</p>
 <pre><code class="language-php"><div class="code-snippet">
   <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
   <pre class="hljs"><code><span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_01&#x27;</span>, <span class="hljs-string">&#x27;var_02&#x27;</span>, <span class="hljs-string">&#x27;var_03&#x27;</span>, <span class="hljs-string">&#x27;var_04&#x27;</span>, <span class="hljs-string">&#x27;var_05&#x27;</span>, <span class="hljs-string">&#x27;var_06&#x27;</span>));
@@ -85,7 +87,7 @@ For the first variable I use <code>var_01</code> to <code>var_06</code> and I us
 </li>
 </ol>
 <h3 id="22-bar-plot-code-explanation"><a class="markdownIt-Anchor" href="#22-bar-plot-code-explanation"></a> 2.2 Bar plot: Code explanation</h3>
-<p>The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare <code>variable1</code> and <code>variable2</code> in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.</p>
+<p>The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare the previously calculated <code>variable1</code> and <code>variable2</code> in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.</p>
 <ol>
 <li>
 <p><strong>Including Chart.js</strong>: The Chart.js library is included via a script tag, which is essential for rendering the chart.</p>
@@ -114,12 +116,12 @@ For the first variable I use <code>var_01</code> to <code>var_06</code> and I us
 </code></pre>
 </div></code></pre>
 <ul>
-<li><strong>Data and aesthetics</strong>: The <code>data</code> object contains labels (<code>variable1</code> and <code>variable2</code>) and datasets. The datasets have data points, background color, border color, and border width.</li>
+<li><strong>Data and aesthetics</strong>: The <code>data</code> object contains labels ('Label1' and 'Label2') and datasets. The datasets have data points, background color, border color, and border width.</li>
 </ul>
 <pre><code class="language-javascript"><div class="code-snippet">
   <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
   <pre class="hljs"><code><span class="hljs-attr">data</span>: {
-  <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;variable1&#x27;</span>, <span class="hljs-string">&#x27;variable2&#x27;</span>],
+  <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
   <span class="hljs-attr">datasets</span>: [{
     <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>],
     <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">&#x27;rgba(178, 24, 43, 0.2)&#x27;</span>,
@@ -152,7 +154,7 @@ For the first variable I use <code>var_01</code> to <code>var_06</code> and I us
 <h3 id="further-customization-fine-tuning"><a class="markdownIt-Anchor" href="#further-customization-fine-tuning"></a> Further customization: Fine tuning</h3>
 <p>One can further customize the <code>backgroundColor</code>, <code>borderColor</code>, and <code>borderWidth</code> by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values. One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval).</p>
 <h3 id="23-radar-plot-code-explanation"><a class="markdownIt-Anchor" href="#23-radar-plot-code-explanation"></a> 2.3 Radar plot: Code explanation</h3>
-<p>Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%Variable1%</code> and <code>%Variable2%</code>) for plotting.</p>
+<p>Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%variable1%</code> and <code>%variable2%</code>) for plotting.</p>
 <ol>
 <li>
 <p><strong>Canvas element</strong>: Again, a canvas element with the id <code>radarChart</code> is defined. This serves as the rendering area for the radar chart.</p>
@@ -171,7 +173,7 @@ For the first variable I use <code>var_01</code> to <code>var_06</code> and I us
 </div></code></pre>
 </li>
 <li>
-<p><strong>JavaScript context</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%Variable1%</code> and <code>%Variable2%</code> are placeholders that would be replaced by actual values.</p>
+<p><strong>JavaScript context</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%variable1%</code> and <code>%variable2%</code> are placeholders that would be replaced by actual values.</p>
 <pre><code class="language-javascript"><div class="code-snippet">
   <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
   <pre class="hljs"><code><span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
@@ -179,7 +181,7 @@ For the first variable I use <code>var_01</code> to <code>var_06</code> and I us
   <span class="hljs-attr">data</span>: {
     <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
     <span class="hljs-attr">datasets</span>: [{
-      <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+      <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>]
     }]
   }
 });
@@ -635,7 +637,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 <h2 id="5-resources"><a class="markdownIt-Anchor" href="#5-resources"></a> 5 Resources</h2>
 <ul>
 <li>Complete sosci project (<code>full.xml</code> -file)</li>
-<li>BFI sosci page only (<code>page.xml</code> -file)</li>
+<li>BFI page only (<code>page.xml</code> -file)</li>
 </ul>
 <p>You can download them <a target="_blank" href="https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report">here</a></p>
 <h2 id="6-additional-examples"><a class="markdownIt-Anchor" href="#6-additional-examples"></a> 6 Additional examples</h2>
@@ -729,7 +731,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
     <span class="hljs-attr">data</span>: {
       <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
       <span class="hljs-attr">datasets</span>: [{
-        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%Variable1%&#x27;</span>, <span class="hljs-string">&#x27;%Variable2%&#x27;</span>]
+        <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>]
       }]
     }
   });
@@ -767,6 +769,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 <pre><code class="language-php"><div class="code-snippet">
   <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
   <pre class="hljs"><code><span class="hljs-comment">// Initialize arrays for scale ranges</span>
+<span class="hljs-comment">// Here I specify the length of each scale</span>
 <span class="hljs-variable">$scale_ranges</span> = <span class="hljs-keyword">array</span>(
     <span class="hljs-string">&#x27;Achtsamkeit&#x27;</span> =&gt; <span class="hljs-number">4</span>,
     <span class="hljs-string">&#x27;Lebenszufriedenheit&#x27;</span> =&gt; <span class="hljs-number">7</span>,
@@ -901,4 +904,17 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
       }
       </script></body>
       </html>
+      <script>
+      window.onload = function() {
+        window.parent.postMessage(
+          {"function": "adjustHeight", "height": document.body.scrollHeight + 20},
+          "*");
+      };
       
+      window.addEventListener("message", function(event) {
+        if (event.data["function"] === "adjustHeight") {
+          const iframe = document.getElementById("myIframe");
+          iframe.style.height = event.data.height + "px";
+        }
+      }, false);
+    </script>

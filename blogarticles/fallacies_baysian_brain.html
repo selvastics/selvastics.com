@@ -1,0 +1,134 @@
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <link rel="stylesheet" href="../assets/css/default.min.css">
+      <style>
+          body {
+              font-family:"Calibri", sans-serif;
+          }
+          .code-snippet {
+            position: relative;
+          }
+          .copy-code-button {
+            position: absolute;
+            top: 26px; 
+            right: 10px; 
+            background-color: #696969;
+            color: white;
+            border: none;
+            cursor: pointer;
+          }
+          pre.hljs code {
+            white-space: pre-wrap;
+          }
+
+          .button-icon {
+            width: 10px;
+           height: 10px;
+           background-color: white;
+
+           }
+
+           .code-snippet {
+            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
+          }
+    
+          
+
+        </style>
+      </head>
+      <body>
+        <h1 id="probabilistic-fallacies-in-the-bayesian-brain-a-critique-of-the-bayesian-approach-to-cognition"><a class="markdownIt-Anchor" href="#probabilistic-fallacies-in-the-bayesian-brain-a-critique-of-the-bayesian-approach-to-cognition"></a> Probabilistic fallacies in the Bayesian brain – A critique of the Bayesian approach to cognition</h1>
+<p><strong>Author</strong>: <a target="_blank" href="https://github.com/selvastics">Clievins Selva</a><br>
+<strong>Date</strong>: March 31, 2023<br>
+<strong>License</strong>: CC BY 4.0</p>
+<h2 id="adaptions"><a class="markdownIt-Anchor" href="#adaptions"></a> adaptions:</h2>
+<p>-adapt .md to .html function, &quot; – &quot;is transformed to &quot;â€“ &quot;
+-adjust formating</p>
+<h2 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract</h2>
+<p>The Bayesian Brain hypothesis is an influential idea in cognitive neuroscience, helping to explain perception, decision-making, and learning. However, it faces obstacles related to falsifiability and conflicts with several fallacies. In this paper, I assess the transparency of Bayesian methods in mathematics and statistics against the Bayesian Brain hypothesis, the limits of intuitive probability, and possible issues with expertise in probabilistic reasoning. The analysis highlights the need to recognize the constraints and difficulties of the Bayesian approach and to investigate alternative ways of understanding cognitive processes. I argue for a thoughtful examination of the Bayesian approach's limitations and a move towards a more mindful use of statistics. In doing this, I aim to promote a deeper and more critical view of the Bayesian Brain hypothesis and its influence on cognitive neuroscience.</p>
+<p><em>Keywords</em>: Bayesian brain, probabilistic fallacies, falsifiability, limitations.</p>
+<h2 id="table-o-c"><a class="markdownIt-Anchor" href="#table-o-c"></a> TABLE O C</h2>
+<p>#adapt later</p>
+<p>II	List of formulas	iv
+1	Introduction	1
+2	Theoretical background	1
+2.1	Explaining human cognition with Bayes' theorem: perception and decision-making	1
+2.1.1	The role of neuronal surprise in the Bayesian brain	2
+2.2	Mathematical and statistical aspects of Bayes' theorem	3
+2.2.1	Introduction to problems with the Bayesian approach	4
+3	The problems of probabilistic reasoning	5
+3.1	Berkson's paradox	5
+3.2	Inverse fallacy	6
+3.3	Prosecutor's fallacy	6
+3.4	Monty Hall problem	7
+3.5	Gambler's fallacy	8
+4	The falsifiability of the Bayesian brain hypothesis	8
+4.1	Transparency of Bayesian approaches in mathematics and statistics vs. the Bayesian brain hypothesis	9
+4.2	The limits of intuitive probability	9
+4.3	Probability and the pitfalls of expertise	10
+5	Discussion	10
+5.1	Interpretation of findings	11
+5.2	Limitations and future directions for research	11
+6	Conclusion	12
+III	References	14
+IV	List of appendices	19
+Statutory declaration	22</p>
+<p>$$range = x_{max} - x_{min}$$</p>
+<h2 id="1introduction"><a class="markdownIt-Anchor" href="#1introduction"></a> 1	Introduction</h2>
+<p>An emerging area of interest within cognitive science is the Bayesian approach to cognition, which posits that the brain processes information using probabilistic models and makes decisions based on Bayesian inference (Friston, 2010). This approach suggests that the brain continually updates its beliefs based on statistical principles and new evidence to make predictions about the likelihood of different outcomes (Denève &amp; Jardri, 2016). However, despite its widespread acceptance, the Bayesian approach to cognition is not without criticisms and limitations (Jones &amp; Love, 2021).
+The importance of examining the Bayesian approach to cognition lies in its far-reaching implications for neuroscience and psychology. A deeper understanding of this approach and its limitations can contribute to developing more accurate models of human cognition and decision-making, benefiting these interdisciplinary fields. This paper adds value by critically analyzing the theoretical foundations of the Bayesian approach to cognition, covering aspects such as Bayes' theorem, neuronal surprise, probabilistic reasoning, falsifiability, transparency, and intuitive probability. The research question that this paper aims to address is: &quot;To what extent do probabilistic fallacies affect the reliability and validity of the Bayesian approach to cognition?&quot; Finally, I will discuss the key findings of my analysis, interpret their implications, and provide suggestions for future research directions in my concluding remarks.</p>
+<h2 id="2theoretical-background"><a class="markdownIt-Anchor" href="#2theoretical-background"></a> 2	Theoretical background</h2>
+<p>In this chapter, I initially explore the Bayesian brain approach, providing insights into its essential concepts and principles. Following that, I delve into the mathematical and statistical foundations of Bayes' theorem, which serves as the backbone of this perspective. Subsequently, I address the difficulties and issues arising from the application of the Bayesian approach to cognition and discuss the broader fallacies of probabilistic reasoning that influence this viewpoint.</p>
+<h2 id="21explaining-human-cognition-with-bayes-theorem-perception-and-decision-making"><a class="markdownIt-Anchor" href="#21explaining-human-cognition-with-bayes-theorem-perception-and-decision-making"></a> 2.1	Explaining human cognition with Bayes' theorem: perception and decision-making</h2>
+<p>The human brain features the ability to adapt and update its beliefs about the world based on new information (Bain, 2016). Bayes' theorem offers a mathematical framework for understanding how this process might work by facilitating the calculation of the probability of different events occurring, founded on the combination of prior knowledge and new evidence.
+This process of integrating new evidence with prior knowledge, known as Bayesian inference, is thought to play a pivotal role in numerous aspects of human cognition, including perception, decision-making, and learning (Rahnev, 2019). Research suggests that the brain employs Bayesian principles to process sensory information and formulate predictions about the environment (Lee &amp; Mumford, 2003; Hasson, 2017; Sedley et al., 2016). In particular, the prefrontal cortex and the posterior parietal cortex have been associated with the integration of prior knowledge and new evidence during Bayesian inference (Herd et al., 2021).
+Lee and Mumford (2003) proposed a hierarchical Bayesian model to explain the brain's processes in the visual cortex, highlighting how the brain integrates prior knowledge with sensory input to perceive the environment. Similarly, Hasson (2017) investigated the neurobiology of uncertainty and its implications for statistical learning, demonstrating that the brain employs Bayesian principles when dealing with ambiguous or uncertain information.</p>
+<h2 id="take-out-the-eeg-study-or-check-reference"><a class="markdownIt-Anchor" href="#take-out-the-eeg-study-or-check-reference"></a> take out the eeg study  &lt;- or check reference</h2>
+<p>In a study using electroencephalogram (EEG), Doelling &amp; Assaneo (2021) found that theta oscillations in the frontal and parietal regions correlated with the use of Bayesian strategies, suggesting that these regions play a role in integrating prior knowledge and new evidence during decision-making. Sedley and colleagues (2016) explored the neural signatures of perceptual inference and identified brain regions involved in different stages of Bayesian inference, further supporting the role of Bayesian principles in human cognition.
+As research delves deeper into the role of Bayesian principles in human cognition, our understanding of the brain's use of this theorem will continue to expand. With this foundation in place, I move forward to a specific aspect of the Bayesian brain: neuronal surprise.</p>
+<h2 id="211the-role-of-neuronal-surprise-in-the-bayesian-brain"><a class="markdownIt-Anchor" href="#211the-role-of-neuronal-surprise-in-the-bayesian-brain"></a> 2.1.1	The role of neuronal surprise in the Bayesian brain</h2>
+<p>The concept of neuronal surprise refers to the discrepancy between the brain's expectations and the actual events occurring in the environment. In the context of the Bayesian brain hypothesis, Bayesian surprise can be described as an &quot;unsigned precision-weighted prediction error&quot; that plays a pivotal role in shaping cognitive processes and adapting to environmental changes (Qiao et al., 2023, p. 1985).
+In their study, Qiao and colleagues (2023) showed that Bayesian surprise modulates connections between stimulus processing brain regions and control regions/networks. This modulation drives cognitive flexibility through control engagement, ultimately allowing the brain to adapt to varying control demands. This research provides valuable insights into the mechanisms underlying cognitive flexibility and the source of switch costs in cognitive tasks (Qiao et al., 2023). Additionally, Gijsen et al. (2021) investigated the cortical dynamics of the somatosensory learning system and identified neural signatures of Bayesian surprise. The study found that secondary somatosensory cortices represent confidence-corrected surprise, while indications of Bayesian surprise encoding are present in the primary somatosensory cortex. This dissociation suggests that early surprise signals may control subsequent model update rates, supporting the hypothesis that early somatosensory processing reflects Bayesian perceptual learning (Gijsen et al., 2021). Furthermore, Visalli et al. (2021) examined electroencephalographic correlates of temporal Bayesian belief updating and surprise. The study demonstrated that late positive, centro-parietally distributed event-related potentials are associated with surprise and belief updating. This evidence suggests that temporal predictions are computed using Bayesian principles and are reflected in P3 modulations, similar to other cognitive domains (Visalli et al., 2021).
+These findings highlight the significance of neuronal surprise in the Bayesian brain, showcasing its role in cognitive control, perceptual learning, and belief updating. In the next chapter, I will review the mathematical and statistical underpinnings of this perspective to provide a deeper understanding of its foundations.</p>
+<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<p>r-graph Gallery. (n.d.). Retrieved from <a target="_blank" href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></p>
+<p>SoSci Survey. (n.d.). Features. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/en/features">https://www.soscisurvey.de/en/features</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Correct. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct">https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Visual. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual">https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</a></p>
+<p>SoSci Survey. (n.d.). Creating Layout. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/de:create:layout">https://www.soscisurvey.de/help/doku.php/de:create:layout</a></p>
+<p>SoSci Survey. (n.d.). Creating Questions: Scale - Inverting Items. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items</a></p>
+<p>Chart.js. (n.d.). Samples. Retrieved from <a target="_blank" href="https://www.chartjs.org/docs/latest/samples/information.html">https://www.chartjs.org/docs/latest/samples/information.html</a></p>
+<p>Rammstedt, B., Lechner, C. M., &amp; Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. <em>Journal of Intelligence, 6</em>(2), 28. <a target="_blank" href="https://doi.org/10.1027/1015-5759/a000481">https://doi.org/10.1027/1015-5759/a000481</a></p>
+
+      <script>
+      async function copyCodeToClipboard(element) {
+        const codeElement = element.nextElementSibling.querySelector('code');
+        const code = codeElement.innerText;
+        try {
+          await navigator.clipboard.writeText(code);
+          element.innerHTML = 'Copied';
+          setTimeout(() => {
+            element.innerHTML = '<img src=\"../assets/images/clipicon.png\" alt=\"Copy Code\" class="button-icon"> Copy Code';
+          }, 3000);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+      }
+      </script></body>
+      </html>
+      <script>
+      window.onload = function() {
+        window.parent.postMessage(
+          {"function": "adjustHeight", "height": document.body.scrollHeight + 20},
+          "*");
+      };
+      
+      window.addEventListener("message", function(event) {
+        if (event.data["function"] === "adjustHeight") {
+          const iframe = document.getElementById("myIframe");
+          iframe.style.height = event.data.height + "px";
+        }
+      }, false);
+    </script>
