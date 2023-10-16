@@ -98,7 +98,7 @@ For the first variable `variable1`is calculated using `var_01` to `var_06` and f
     ```
 
 ### Further customization: Fine tuning
-One can further customize the `backgroundColor`, `borderColor`, and `borderWidth` by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values. One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval). 
+One can further customize the `backgroundColor`, `borderColor`, and `borderWidth` by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values. One can also include error bars (represented as standard deviation, standard error or confidence interval). 
 
 ### 2.3 Radar plot: Code explanation
 Similar to the previous chart, this code snippet implements the Chart.js library. It creates a radar chart with two labels: `Label1` and `Label2`, and uses two variables (`%variable1%` and `%variable2%`) for plotting. 
