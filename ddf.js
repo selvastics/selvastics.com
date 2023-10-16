@@ -15,19 +15,20 @@ const md = new MarkdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return `<div class="code-snippet">
-        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
-        <pre class="hljs"><code>${hljs.highlight(str, { language: lang, ignoreIllegals: true }).value}</code></pre>
-      </div>`;
-            } catch (__) {}
-          }
+return `<div class="code-snippet">
+  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
+  <pre class="hljs"><code>${hljs.highlight(str, { language: lang, ignoreIllegals: true }).value}</code></pre>
+</div>`;
+      } catch (__) {}
+    }
     return `<div class="code-snippet">
-      <button class="copy-code-button" onclick="copyCodeToClipboard(this)">
-        <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code
-      </button>
-      <pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>
-    </div>`;
+    <button class="copy-code-button" onclick="copyCodeToClipboard(this)">
+    <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code
+  </button>
+              <pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>
+            </div>`;
   }
+
 }).use(mdTocAndAnchor, {
   tocClassName: 'toc',
   anchorLink: true,
@@ -63,11 +64,10 @@ fs.readdir(dirPath, (err, files) => {
             position: absolute;
             top: 26px; 
             right: 10px; 
-            background-color: transparent;
-            color: black;
-            border: 2px solid lightgrey; /* Add a grey border */
+            background-color: #696969;
+            color: white;
+            border: none;
             cursor: pointer;
-
           }
           pre.hljs code {
             white-space: pre-wrap;
@@ -101,6 +101,8 @@ fs.readdir(dirPath, (err, files) => {
       </html>
       `;
 
+
+
       const copyCodeJS = `<script>
       async function copyCodeToClipboard(element) {
         const codeElement = element.nextElementSibling.querySelector('code');
@@ -109,7 +111,7 @@ fs.readdir(dirPath, (err, files) => {
           await navigator.clipboard.writeText(code);
           element.innerHTML = 'Copied';
           setTimeout(() => {
-            element.innerHTML = '<img src=\\"../assets/images/copy-24.png\\" alt=\\"Copy Code\\" class="button-icon"> Copy Code';
+            element.innerHTML = '<img src=\\"../assets/images/clipicon.png\\" alt=\\"Copy Code\\" class="button-icon"> Copy Code';
           }, 3000);
         } catch (err) {
           console.error('Failed to copy text: ', err);
@@ -118,7 +120,9 @@ fs.readdir(dirPath, (err, files) => {
       </script>`;
       
 
-      styledHtmlContent += `<!-- Add this script to the end of your blogarticles-->
+
+
+      styledHtmlContent +=`<!-- Add this script to the end of your blogarticles-->
       <script>
         window.onload = function() {
           window.parent.postMessage({"height": document.body.scrollHeight}, "*");

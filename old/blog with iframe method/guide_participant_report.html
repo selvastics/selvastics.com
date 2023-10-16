@@ -20,7 +20,6 @@
             color: black;
             border: 2px solid lightgrey; /* Add a grey border */
             cursor: pointer;
-
           }
           pre.hljs code {
             white-space: pre-wrap;
@@ -50,7 +49,7 @@
       </head>
       <body>
         <h1 id="how-to-provide-direct-feedback-on-survey-results-for-your-participants"><a class="markdownIt-Anchor" href="#how-to-provide-direct-feedback-on-survey-results-for-your-participants"></a> How to provide direct feedback on survey results for your participants</h1>
-<p><strong>Author</strong>: <a target="_blank" href="https://github.com/selvastics">Clievins Selva</a><br>
+<p><strong>Author</strong>: <a href="https://github.com/selvastics">Clievins Selva</a><br>
 <strong>Date</strong>: October 12, 2023<br>
 <strong>License</strong>: CC BY 4.0</p>
 <h2 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract</h2>
@@ -59,7 +58,7 @@
 <p>SoSci Survey is an online tool frequently used in academic research for creating surveys. It offers various features, including question branching, randomization, and multilingual support (SoSci Survey, n.d.). Beyond these functionalities, its capacity to integrate HTML, CSS, and JavaScript allows for the visualization of individual results for participants. This opens up the possibility of immediate feedback, a cornerstone of the learning process that has been studied extensively across fields like psychology, education, and human-computer interaction. Immediate feedback, anchored in constructivist learning theory, enhances the learning experience by allowing for the correction of errors and reinforcement of understanding. In the realm of online surveys, this can significantly augment participant engagement, thereby improving data quality and validity.</p>
 <p>However, the challenge often lies in reconciling the desire for immediate feedback with the need for participant anonymity and data protection, especially in the European context governed by the General Data Protection Regulation (GDPR). GDPR imposes stringent requirements on data collection and processing, advocating for data minimization and privacy by design (SoSci Survey, n.d.). These principles recommend that data should be processed locally on the client-side whenever possible. In the context of online surveys, this translates to enabling participants to download their results directly without the need for collecting personal identifiers like email addresses, thus adhering to GDPR guidelines.</p>
 <p>The choice of how to visually represent this immediate feedback is another critical consideration. While various chart types exist, this article focuses on bar plots and radar plots. Bar plots are particularly effective for straightforward comparisons of individual data points across categories, making them easily interpretable by participants. Radar plots, in contrast, are more suitable for representing multivariate data, allowing for the assessment of multiple variables at once. This makes them ideal for more complex data interpretations, such as presenting a participant's personality profile in the context of the Big Five Inventory (BFI).</p>
-<p>However, the principles and techniques discussed here can be adapted to numerous other types of charts. The <a target="_blank" href="https://r-graph-gallery.com/index.html">r-graph Gallery </a> provides numerous examples of how data can be plotted, offering a valuable resource for researchers looking to implement suiting graphical elements specific to their variables of interest. By combining the capabilities of SoSci Survey with GDPR-compliant methods and carefully selected chart types, researchers can offer participants immediate, meaningful, and secure feedback, thereby enriching the survey experience and potentially elevating the quality of the data collected.</p>
+<p>However, the principles and techniques discussed here can be adapted to numerous other types of charts. The <a href="https://r-graph-gallery.com/index.html">r-graph Gallery </a> provides numerous examples of how data can be plotted, offering a valuable resource for researchers looking to implement suiting graphical elements specific to their variables of interest. By combining the capabilities of SoSci Survey with GDPR-compliant methods and carefully selected chart types, researchers can offer participants immediate, meaningful, and secure feedback, thereby enriching the survey experience and potentially elevating the quality of the data collected.</p>
 <h2 id="2-technical-implementation"><a class="markdownIt-Anchor" href="#2-technical-implementation"></a> 2 Technical Implementation</h2>
 <h3 id="prerequisites"><a class="markdownIt-Anchor" href="#prerequisites"></a> Prerequisites</h3>
 <p>To execute the code samples in this article, I assume that you have an operational SoSci Survey project and are familiar with HTML, CSS, and JavaScript. For those not acquainted with these web technologies, I recommend importing the provided <span class='yellow-quote'>.xml</span> file into SoSci Survey as a starting point for building your study.</p>
@@ -256,7 +255,7 @@ For the first variable <span class='yellow-quote'>variable1</span>is calculated 
 <li>Neuroticism: <span class='yellow-quote'>Neurotizismus</span></li>
 </ul>
 <p>The code assumes that there is a question category BF01 with individual item 1 to item 30, previous to the code implementation.</p>
-<p>As item 1,3,7,8,10,14,17,19,20,21,24,26,27,28 and 30 are reversed, we can either set these items as reversed items within sosci, or calculate the reversed score using the <span class='yellow-quote'>value()</span> function to fetch the respondent's original score and then use the <span class='yellow-quote'>put()</span> function to save the recalculated score into an internal variable. See the <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">SoSci Survey Guide</a> for detailed instructions for in-php reversing.
+<p>As item 1,3,7,8,10,14,17,19,20,21,24,26,27,28 and 30 are reversed, we can either set these items as reversed items within sosci, or calculate the reversed score using the <span class='yellow-quote'>value()</span> function to fetch the respondent's original score and then use the <span class='yellow-quote'>put()</span> function to save the recalculated score into an internal variable. See the <a href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">SoSci Survey Guide</a> for detailed instructions for in-php reversing.
 In the following php code chunck, I calculate means for items that are reversed within sosci survey.</p>
 <pre><code class="language-php"><div class="code-snippet">
         <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
@@ -630,7 +629,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 <h4 id="plot-size-adjustment"><a class="markdownIt-Anchor" href="#plot-size-adjustment"></a> Plot size adjustment</h4>
 <p>If the plot appears too large in the PDF file, its dimensions can be adjusted in the Chart.js configuration options by setting the <span class='yellow-quote'>height</span> and <span class='yellow-quote'>width</span> properties.</p>
 <h4 id="changing-plot-types"><a class="markdownIt-Anchor" href="#changing-plot-types"></a> Changing plot types</h4>
-<p>To change the type of plot, one needs to modify the <span class='yellow-quote'>type</span> property in the <a target="_blank" href="https://www.chartjs.org/docs/latest/samples/information.html">Chart.js </a> configuration. This will update the plot type for subsequent renderings.</p>
+<p>To change the type of plot, one needs to modify the <span class='yellow-quote'>type</span> property in the <a href="https://www.chartjs.org/docs/latest/samples/information.html">Chart.js </a> configuration. This will update the plot type for subsequent renderings.</p>
 <h4 id="extensive-pdf-file-with-all-results"><a class="markdownIt-Anchor" href="#extensive-pdf-file-with-all-results"></a> Extensive PDF file with all results</h4>
 <p>If one desires a comprehensive PDF file with all survey results, multiple pages will need to be created and written individually. This typically involves looping through each result set and adding it to a new PDF page.</p>
 <h3 id="faq-section"><a class="markdownIt-Anchor" href="#faq-section"></a> FAQ Section</h3>
@@ -640,6 +639,8 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 <strong>A:</strong> Yes, it is possible to incorporate multiple plots within a single PDF. This can be achieved by creating separate canvas elements for each plot and rendering them individually. Be aware that this may require adjustments to the plot dimensions within the PDF or necessitate the creation of multiple PDF pages.</p>
 <p><strong>Q: Despite my efforts, my code still is not working. What should I do?</strong><br>
 <strong>A:</strong> If troubleshooting proves ineffective, consider implementing the <span class='yellow-quote'>.xml</span> file provided in the resource section and building your questionnaire from that foundation.</p>
+<p><strong>Q: The plot in my PDF file appears distorted. How can I rectify this?</strong><br>
+<strong>A:</strong> To correct distorted plot dimensions, modify the <span class='yellow-quote'>height</span> and <span class='yellow-quote'>width</span> properties in the Chart.js configuration settings.</p>
 <p><strong>Q: How can I contribute to this project?</strong><br>
 <strong>A:</strong> Contributions are welcome. Feel free to share your code examples and offer additional suggestions to enhance the project's utility.</p>
 <h2 id="5-resources"><a class="markdownIt-Anchor" href="#5-resources"></a> 5 Resources</h2>
@@ -647,7 +648,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 <li>Complete sosci project (<span class='yellow-quote'>full.xml</span> -file)</li>
 <li>BFI page only (<span class='yellow-quote'>page.xml</span> -file)</li>
 </ul>
-<p>You can download them <a target="_blank" href="https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report">here</a></p>
+<p>You can download them <a href="https://github.com/selvastics/selvastics.github.io/tree/main/resources/partcipant_report">here</a></p>
 <h2 id="6-additional-examples"><a class="markdownIt-Anchor" href="#6-additional-examples"></a> 6 Additional examples</h2>
 <p><strong>Simple bar plot:</strong></p>
 <p>For PHP:</p>
@@ -887,35 +888,22 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
 </code></pre>
       </div></code></pre>
 <h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
-<p>r-graph Gallery. (n.d.). Retrieved from <a target="_blank" href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></p>
-<p>SoSci Survey. (n.d.). Features. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/en/features">https://www.soscisurvey.de/en/features</a></p>
-<p>SoSci Survey. (n.d.). Creating Feedback: Correct. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct">https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct</a></p>
-<p>SoSci Survey. (n.d.). Creating Feedback: Visual. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual">https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</a></p>
-<p>SoSci Survey. (n.d.). Creating Layout. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/de:create:layout">https://www.soscisurvey.de/help/doku.php/de:create:layout</a></p>
-<p>SoSci Survey. (n.d.). Creating Questions: Scale - Inverting Items. Retrieved from <a target="_blank" href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items</a></p>
-<p>Chart.js. (n.d.). Samples. Retrieved from <a target="_blank" href="https://www.chartjs.org/docs/latest/samples/information.html">https://www.chartjs.org/docs/latest/samples/information.html</a></p>
-<p>Rammstedt, B., Lechner, C. M., &amp; Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. <em>Journal of Intelligence, 6</em>(2), 28. <a target="_blank" href="https://doi.org/10.1027/1015-5759/a000481">https://doi.org/10.1027/1015-5759/a000481</a></p>
+<p>r-graph Gallery. (n.d.). Retrieved from <a href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a></p>
+<p>SoSci Survey. (n.d.). Features. Retrieved from <a href="https://www.soscisurvey.de/en/features">https://www.soscisurvey.de/en/features</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Correct. Retrieved from <a href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct">https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct</a></p>
+<p>SoSci Survey. (n.d.). Creating Feedback: Visual. Retrieved from <a href="https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual">https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</a></p>
+<p>SoSci Survey. (n.d.). Creating Layout. Retrieved from <a href="https://www.soscisurvey.de/help/doku.php/de:create:layout">https://www.soscisurvey.de/help/doku.php/de:create:layout</a></p>
+<p>SoSci Survey. (n.d.). Creating Questions: Scale - Inverting Items. Retrieved from <a href="https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items">https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items</a></p>
+<p>Chart.js. (n.d.). Samples. Retrieved from <a href="https://www.chartjs.org/docs/latest/samples/information.html">https://www.chartjs.org/docs/latest/samples/information.html</a></p>
+<p>Rammstedt, B., Lechner, C. M., &amp; Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. <em>Journal of Intelligence, 6</em>(2), 28. <a href="https://doi.org/10.1027/1015-5759/a000481">https://doi.org/10.1027/1015-5759/a000481</a></p>
 
-      <script>
-      async function copyCodeToClipboard(element) {
-        const codeElement = element.nextElementSibling.querySelector('code');
-        const code = codeElement.innerText;
-        try {
-          await navigator.clipboard.writeText(code);
-          element.innerHTML = 'Copied';
-          setTimeout(() => {
-            element.innerHTML = '<img src=\"../assets/images/copy-24.png\" alt=\"Copy Code\" class="button-icon"> Copy Code';
-          }, 3000);
-        } catch (err) {
-          console.error('Failed to copy text: ', err);
-        }
-      }
+<!-- Add this script to the end of your blogarticles/guide_participant_report.html -->
+<script>
+  window.onload = function() {
+    window.parent.postMessage({"height": document.body.scrollHeight}, "*");
+  }
+</script>
+
       </script></body>
       </html>
-      <!-- Add this script to the end of your blogarticles-->
-      <script>
-        window.onload = function() {
-          window.parent.postMessage({"height": document.body.scrollHeight}, "*");
-        }
-      </script>
       

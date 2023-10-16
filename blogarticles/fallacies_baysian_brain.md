@@ -11,7 +11,7 @@
 -adjust formating
 
 
-
+"ääöüßsüöä@"
 
 ## Abstract
 The Bayesian Brain hypothesis is an influential idea in cognitive neuroscience, helping to explain perception, decision-making, and learning. However, it faces obstacles related to falsifiability and conflicts with several fallacies. In this paper, I assess the transparency of Bayesian methods in mathematics and statistics against the Bayesian Brain hypothesis, the limits of intuitive probability, and possible issues with expertise in probabilistic reasoning. The analysis highlights the need to recognize the constraints and difficulties of the Bayesian approach and to investigate alternative ways of understanding cognitive processes. I argue for a thoughtful examination of the Bayesian approach's limitations and a move towards a more mindful use of statistics. In doing this, I aim to promote a deeper and more critical view of the Bayesian Brain hypothesis and its influence on cognitive neuroscience.

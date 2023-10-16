@@ -10,7 +10,6 @@ const mathJaxScript = `<script id="MathJax-script" async src="https://cdn.jsdeli
 
 
 
-
 const md = new MarkdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -67,7 +66,6 @@ fs.readdir(dirPath, (err, files) => {
             color: black;
             border: 2px solid lightgrey; /* Add a grey border */
             cursor: pointer;
-
           }
           pre.hljs code {
             white-space: pre-wrap;
@@ -101,6 +99,8 @@ fs.readdir(dirPath, (err, files) => {
       </html>
       `;
 
+
+
       const copyCodeJS = `<script>
       async function copyCodeToClipboard(element) {
         const codeElement = element.nextElementSibling.querySelector('code');
@@ -109,30 +109,16 @@ fs.readdir(dirPath, (err, files) => {
           await navigator.clipboard.writeText(code);
           element.innerHTML = 'Copied';
           setTimeout(() => {
-            element.innerHTML = '<img src=\\"../assets/images/copy-24.png\\" alt=\\"Copy Code\\" class="button-icon"> Copy Code';
+            element.innerHTML = '<img src=\\"../assets/images/clipicon.png\\" alt=\\"Copy code\\" class="button-icon"> Copy code';
           }, 3000);
         } catch (err) {
           console.error('Failed to copy text: ', err);
         }
       }
       </script>`;
-      
-
-      styledHtmlContent += `<!-- Add this script to the end of your blogarticles-->
-      <script>
-        window.onload = function() {
-          window.parent.postMessage({"height": document.body.scrollHeight}, "*");
-        }
-      </script>
-      `;
 
       styledHtmlContent = styledHtmlContent.replace('</body>', `${copyCodeJS}</body>`);
       styledHtmlContent = styledHtmlContent.replace(/<code>([^<]+)<\/code>/g, "<span class='yellow-quote'>$1</span>");
-
-      styledHtmlContent = styledHtmlContent.replace(/<h([1-6])># /g, '<h$1>');
-      styledHtmlContent = styledHtmlContent.replace(/<a href="http/g, '<a target="_blank" href="http');
-      styledHtmlContent = styledHtmlContent.replace(/<a href="#/g, `<a href="readme.html#`);
-
 
       const newFilePath = path.join(dirPath, `${path.basename(file, '.md')}.html`);
       fs.writeFileSync(newFilePath, styledHtmlContent, { encoding: 'utf8' });

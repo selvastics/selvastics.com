@@ -578,9 +578,6 @@ If one desires a comprehensive PDF file with all survey results, multiple pages 
 **Q: Despite my efforts, my code still is not working. What should I do?**  
 **A:** If troubleshooting proves ineffective, consider implementing the `.xml` file provided in the resource section and building your questionnaire from that foundation.
 
-**Q: The plot in my PDF file appears distorted. How can I rectify this?**  
-**A:** To correct distorted plot dimensions, modify the `height` and `width` properties in the Chart.js configuration settings.
-
 **Q: How can I contribute to this project?**  
 **A:** Contributions are welcome. Feel free to share your code examples and offer additional suggestions to enhance the project's utility.
 

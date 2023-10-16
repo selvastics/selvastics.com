@@ -2,10 +2,12 @@
       <!DOCTYPE html>
       <html>
       <head>
-      <link rel="stylesheet" href="../assets/css/default.min.css">
-      <style>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../assets/css/default.min.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> <!-- Include MathJax script here -->
+        <style>
           body {
-              font-family:"Calibri", sans-serif;
+            font-family:"Calibri", sans-serif;
           }
           .code-snippet {
             position: relative;
@@ -14,27 +16,35 @@
             position: absolute;
             top: 26px; 
             right: 10px; 
-            background-color: #696969;
-            color: white;
-            border: none;
+            background-color: transparent;
+            color: black;
+            border: 2px solid lightgrey; /* Add a grey border */
             cursor: pointer;
+
           }
           pre.hljs code {
             white-space: pre-wrap;
           }
-
           .button-icon {
             width: 10px;
-           height: 10px;
-           background-color: white;
-
-           }
-
-           .code-snippet {
-            margin-top: -40px;  // THIS IS FOR MOVING THE CHUNCKS UP. Use a negative value to pull the code block up
+            height: 10px;
+            background-color: white;
           }
-    
+          .code-snippet {
+            margin-top: -40px;
+          }
+
+          span.yellow-quote {
+            color: orange;
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            font-family: monospace;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+          }
           
+
+
 
         </style>
       </head>
@@ -95,57 +105,57 @@
 <li>A working SoSci Survey project</li>
 <li>Familiarity with HTML, CSS, and JavaScript</li>
 </ul>
-<p><code>%variable1%</code> and <code>%variable2%</code> are placeholders for the variables that will be replaced by the participant's actual scores.</p>
+<p><span class='yellow-quote'>%variable1%</span> and <span class='yellow-quote'>%variable2%</span> are placeholders for the variables that will be replaced by the participant's actual scores.</p>
 <p>as well as 'var_01' to 'var_12' these are you ... the are in xx replace them with your variables. The following code exmaples are the basic code for the chart.</p>
 <h3 id="calculation-of-participant-indices"><a class="markdownIt-Anchor" href="#calculation-of-participant-indices"></a> Calculation of participant indices</h3>
-<p>The provided PHP code snippet calculates two variables, <code>variable1</code> and <code>variable2</code>, by taking the mean of six distinct variables each. These calculated means are then formatted to one decimal place and are intended to be used in a chart. The code relies on a user-defined function, <code>valueMean()</code>, to perform the mean calculations.</p>
+<p>The provided PHP code snippet calculates two variables, <span class='yellow-quote'>variable1</span> and <span class='yellow-quote'>variable2</span>, by taking the mean of six distinct variables each. These calculated means are then formatted to one decimal place and are intended to be used in a chart. The code relies on a user-defined function, <span class='yellow-quote'>valueMean()</span>, to perform the mean calculations.</p>
 <ol>
 <li>
-<p><strong>Calculating Mean for <code>variable1</code> and <code>variable2</code></strong>: The <code>valueMean()</code> function is presumably defined elsewhere to calculate the mean of an array of values. Here it is used to calculate the mean for two sets of variables (<code>var_01</code> to <code>var_06</code> for <code>variable1</code> and <code>var_07</code> to <code>var_12</code> for <code>variable2</code>).</p>
+<p><strong>Calculating Mean for <span class='yellow-quote'>variable1</span> and <span class='yellow-quote'>variable2</span></strong>: The <span class='yellow-quote'>valueMean()</span> function is presumably defined elsewhere to calculate the mean of an array of values. Here it is used to calculate the mean for two sets of variables (<span class='yellow-quote'>var_01</span> to <span class='yellow-quote'>var_06</span> for <span class='yellow-quote'>variable1</span> and <span class='yellow-quote'>var_07</span> to <span class='yellow-quote'>var_12</span> for <span class='yellow-quote'>variable2</span>).</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_01&#x27;</span>, <span class="hljs-string">&#x27;var_02&#x27;</span>, <span class="hljs-string">&#x27;var_03&#x27;</span>, <span class="hljs-string">&#x27;var_04&#x27;</span>, <span class="hljs-string">&#x27;var_05&#x27;</span>, <span class="hljs-string">&#x27;var_06&#x27;</span>));
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_01&#x27;</span>, <span class="hljs-string">&#x27;var_02&#x27;</span>, <span class="hljs-string">&#x27;var_03&#x27;</span>, <span class="hljs-string">&#x27;var_04&#x27;</span>, <span class="hljs-string">&#x27;var_05&#x27;</span>, <span class="hljs-string">&#x27;var_06&#x27;</span>));
 <span class="hljs-variable">$variable2</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;var_07&#x27;</span>, <span class="hljs-string">&#x27;var_08&#x27;</span>, <span class="hljs-string">&#x27;var_09&#x27;</span>, <span class="hljs-string">&#x27;var_10&#x27;</span>, <span class="hljs-string">&#x27;var_11&#x27;</span>, <span class="hljs-string">&#x27;var_12&#x27;</span>));
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
-<p><strong>Debugging</strong>: The <code>debug($variable1)</code> and <code>debug($variable2)</code> lines are for debugging purposes, presumably printing the calculated mean values to the log.</p>
+<p><strong>Debugging</strong>: The <span class='yellow-quote'>debug($variable1)</span> and <span class='yellow-quote'>debug($variable2)</span> lines are for debugging purposes, presumably printing the calculated mean values to the log.</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable1</span>);
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable1</span>);
 <span class="hljs-title function_ invoke__">debug</span>(<span class="hljs-variable">$variable2</span>);
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
-<p><strong>String Formatting and Replacement</strong>: The <code>sprintf('%1.1f', $variable1)</code> and <code>sprintf('%1.1f', $variable2)</code> lines format the mean values to one decimal place. These formatted values replace <code>%variable1%</code> and <code>%variable2%</code>, which are placeholders likely used in a subsequent chart or report.</p>
+<p><strong>String Formatting and Replacement</strong>: The <span class='yellow-quote'>sprintf('%1.1f', $variable1)</span> and <span class='yellow-quote'>sprintf('%1.1f', $variable2)</span> lines format the mean values to one decimal place. These formatted values replace <span class='yellow-quote'>%variable1%</span> and <span class='yellow-quote'>%variable2%</span>, which are placeholders likely used in a subsequent chart or report.</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable1</span>));
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable1</span>));
 <span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable2%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable2</span>));
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 </ol>
 <h3 id="bar-plot-code-explanation"><a class="markdownIt-Anchor" href="#bar-plot-code-explanation"></a> Bar Plot: Code Explanation</h3>
-<p>The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare <code>variable1</code> and <code>variable2</code> in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.</p>
+<p>The code provided is an HTML/JavaScript snippet that uses the Chart.js library to render a bar chart. I compare <span class='yellow-quote'>variable1</span> and <span class='yellow-quote'>variable2</span> in this example.  The chart is customized with specific colors for the background and border, as well as border width. The Y-axis scale is set to range between 1 and 7. This explanation will dissect the code, focusing on key elements like the data structure, aesthetic properties, and configuration options.</p>
 <ol>
 <li>
 <p><strong>Including Chart.js</strong>: The Chart.js library is included via a script tag, which is essential for rendering the chart.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
-<p><strong>Canvas Element</strong>: A canvas element with the id <code>barChart</code> is created. This is where the chart will be rendered.</p>
+<p><strong>Canvas Element</strong>: A canvas element with the id <span class='yellow-quote'>barChart</span> is created. This is where the chart will be rendered.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;barChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
 <p><strong>JavaScript Code</strong>: The main JavaScript code does the following:</p>
@@ -153,16 +163,16 @@
 <li><strong>Context Retrieval</strong>: The context of the canvas is obtained using</li>
 </ul>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <ul>
-<li><strong>Data and Aesthetics</strong>: The <code>data</code> object contains labels (<code>variable1</code> and <code>variable2</code>) and datasets. The datasets have data points, background color, border color, and border width.</li>
+<li><strong>Data and Aesthetics</strong>: The <span class='yellow-quote'>data</span> object contains labels (<span class='yellow-quote'>variable1</span> and <span class='yellow-quote'>variable2</span>) and datasets. The datasets have data points, background color, border color, and border width.</li>
 </ul>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-attr">data</span>: {
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-attr">data</span>: {
   <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;variable1&#x27;</span>, <span class="hljs-string">&#x27;variable2&#x27;</span>],
   <span class="hljs-attr">datasets</span>: [{
     <span class="hljs-attr">data</span>: [<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-string">&#x27;%variable2%&#x27;</span>],
@@ -172,13 +182,13 @@
   }]
 }
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <ul>
 <li><strong>Options</strong>: One can set additional options like scales and plugins. Here, the Y-axis is limited to values between 1 and 7, and the legend is hidden.</li>
 </ul>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-attr">options</span>: {
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-attr">options</span>: {
   <span class="hljs-attr">scales</span>: {
     <span class="hljs-attr">y</span>: {
       <span class="hljs-attr">min</span>: <span class="hljs-number">1</span>,
@@ -190,36 +200,36 @@
   }
 }
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 </ol>
 <h3 id="further-customization-fine-tuning"><a class="markdownIt-Anchor" href="#further-customization-fine-tuning"></a> Further Customization: Fine tuning</h3>
-<p>One can further customize the <code>backgroundColor</code>, <code>borderColor</code>, and <code>borderWidth</code> by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values.
+<p>One can further customize the <span class='yellow-quote'>backgroundColor</span>, <span class='yellow-quote'>borderColor</span>, and <span class='yellow-quote'>borderWidth</span> by changing their respective values in the dataset object. For more colors, use any valid CSS color specification like hex, RGB, or RGBA values.
 One can also include error bars (represented as Standard deviation, Standard error or Confidence Interval)</p>
 <h3 id="radar-plot-code-explanation"><a class="markdownIt-Anchor" href="#radar-plot-code-explanation"></a> Radar Plot: Code Explanation</h3>
-<p>The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: <code>Label1</code> and <code>Label2</code>, and uses two variables (<code>%variable1%</code> and <code>%variable2%</code>) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.</p>
+<p>The code snippet is a straightforward implementation of a radar chart using the Chart.js library. It creates a radar chart with two labels: <span class='yellow-quote'>Label1</span> and <span class='yellow-quote'>Label2</span>, and uses two variables (<span class='yellow-quote'>%variable1%</span> and <span class='yellow-quote'>%variable2%</span>) for plotting. The utility of norm scores in radar plots for aiding participant interpretation is also mentioned.</p>
 <ol>
 <li>
-<p><strong>Canvas Element</strong>: Similar to the bar chart, a canvas element with the id <code>radarChart</code> is defined. This serves as the rendering area for the radar chart.</p>
+<p><strong>Canvas Element</strong>: Similar to the bar chart, a canvas element with the id <span class='yellow-quote'>radarChart</span> is defined. This serves as the rendering area for the radar chart.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radarChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radarChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
 <p><strong>JavaScript Context</strong>: The 2D rendering context of the canvas element is obtained, allowing drawing operations.</p>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;radarChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;radarChart&#x27;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
-<p><strong>Radar Chart Creation</strong>: A new Chart object is instantiated with the type set to <code>radar</code>. The data object contains labels and datasets, where <code>%variable1%</code> and <code>%variable2%</code> are placeholders that would be replaced by actual values.</p>
+<p><strong>Radar Chart Creation</strong>: A new Chart object is instantiated with the type set to <span class='yellow-quote'>radar</span>. The data object contains labels and datasets, where <span class='yellow-quote'>%variable1%</span> and <span class='yellow-quote'>%variable2%</span> are placeholders that would be replaced by actual values.</p>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, {
   <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;radar&#x27;</span>,
   <span class="hljs-attr">data</span>: {
     <span class="hljs-attr">labels</span>: [<span class="hljs-string">&#x27;Label1&#x27;</span>, <span class="hljs-string">&#x27;Label2&#x27;</span>],
@@ -229,42 +239,42 @@ One can also include error bars (represented as Standard deviation, Standard err
   }
 });
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 </ol>
 <h3 id="further-customization-norm-scores"><a class="markdownIt-Anchor" href="#further-customization-norm-scores"></a> Further Customization: Norm scores</h3>
 <p>Norm scores can be particularly useful for helping participants interpret their results. These are often represented as additional datasets on the radar chart, allowing for direct comparison between individual and normative data. This can be achieved using <em>SPELLIGN EROR</em> set values that are displayed alongsite the participant values. You can add an additional radar chart to overlay using xxx funciton. An example is provided in the resources. This can be particularly useful for radar plots, for which an example code is provided. Adaptions for other plots are accordingly.</p>
 <h3 id="providing-a-downloadable-pdf"><a class="markdownIt-Anchor" href="#providing-a-downloadable-pdf"></a> Providing a Downloadable PDF</h3>
-<p>The provided HTML and JavaScript code snippet demonstrates the use of <code>jsPDF</code> and <code>html2canvas</code> libraries to enable a client-side PDF download of a rendered chart. A button is provided, and upon clicking it, the canvas containing the chart is converted to an image, which is then embedded into a PDF file. This explanation will discuss the inclusion of the required libraries, the button's functionality, and the JavaScript logic for converting the canvas to a PDF.</p>
+<p>The provided HTML and JavaScript code snippet demonstrates the use of <span class='yellow-quote'>jsPDF</span> and <span class='yellow-quote'>html2canvas</span> libraries to enable a client-side PDF download of a rendered chart. A button is provided, and upon clicking it, the canvas containing the chart is converted to an image, which is then embedded into a PDF file. This explanation will discuss the inclusion of the required libraries, the button's functionality, and the JavaScript logic for converting the canvas to a PDF.</p>
 <ol>
 <li>
-<p><strong>Library Inclusion</strong>: The <code>jsPDF</code> and <code>html2canvas</code> libraries are included to facilitate PDF creation and canvas-to-image conversion, respectively.</p>
+<p><strong>Library Inclusion</strong>: The <span class='yellow-quote'>jsPDF</span> and <span class='yellow-quote'>html2canvas</span> libraries are included to facilitate PDF creation and canvas-to-image conversion, respectively.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
-<p><strong>Download Button</strong>: A simple HTML button with the id <code>downloadPdf</code> is added, which will trigger the PDF download when clicked.</p>
+<p><strong>Download Button</strong>: A simple HTML button with the id <span class='yellow-quote'>downloadPdf</span> is added, which will trigger the PDF download when clicked.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;downloadPdf&quot;</span>&gt;</span>Download PDF<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;downloadPdf&quot;</span>&gt;</span>Download PDF<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 <li>
 <p><strong>JavaScript Logic</strong>: An event listener is attached to the button, and upon clicking, it performs the following operations:</p>
 <ul>
-<li>Calls <code>html2canvas</code> to convert the canvas element to a PNG image.</li>
-<li>Initializes a new <code>jsPDF</code> object.</li>
+<li>Calls <span class='yellow-quote'>html2canvas</span> to convert the canvas element to a PNG image.</li>
+<li>Initializes a new <span class='yellow-quote'>jsPDF</span> object.</li>
 <li>Adds the image to the PDF.</li>
-<li>Saves the PDF with the filename <code>download.pdf</code>.</li>
+<li>Saves the PDF with the filename <span class='yellow-quote'>download.pdf</span>.</li>
 </ul>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
   <span class="hljs-title function_">html2canvas</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;barChart&#x27;</span>), {
     <span class="hljs-attr">onrendered</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">canvas</span>) {
       <span class="hljs-keyword">var</span> imgData = canvas.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&#x27;image/png&#x27;</span>);
@@ -275,18 +285,18 @@ One can also include error bars (represented as Standard deviation, Standard err
   });
 });
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 </li>
 </ol>
 <h2 id="4-practical-example-big-five-inventory-for-personality-assessment"><a class="markdownIt-Anchor" href="#4-practical-example-big-five-inventory-for-personality-assessment"></a> 4. Practical Example: Big Five Inventory for Personality Assessment</h2>
 <p>The Big Five Inventory (BFI) is a widely recognized instrument for assessing five key dimensions of personality: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism. For the purposes of this guide, we will focus on implementing the BFI based on the work of Sato (2020). This practical example demonstrates how participants can receive a PDF download after responding to BFI items on SoSci Survey.</p>
 <p>To implement the BFI in SoSci Survey, create a new questionnaire and add the BFI items as questions. Make sure to name the variables according to the following naming convention, as we will use these variable names in our code:</p>
 <ul>
-<li>Openness: <code>Openness_Score</code></li>
-<li>Conscientiousness: <code>Conscientiousness_Score</code></li>
-<li>Extraversion: <code>Extraversion_Score</code></li>
-<li>Agreeableness: <code>Agreeableness_Score</code></li>
-<li>Neuroticism: <code>Neuroticism_Score</code></li>
+<li>Openness: <span class='yellow-quote'>Openness_Score</span></li>
+<li>Conscientiousness: <span class='yellow-quote'>Conscientiousness_Score</span></li>
+<li>Extraversion: <span class='yellow-quote'>Extraversion_Score</span></li>
+<li>Agreeableness: <span class='yellow-quote'>Agreeableness_Score</span></li>
+<li>Neuroticism: <span class='yellow-quote'>Neuroticism_Score</span></li>
 </ul>
 <p>The code assumes that there is a question category BF01 with individual item 1 to 30.<br>
 image.png</p>
@@ -294,8 +304,8 @@ image.png</p>
 <p>You can also implement this BFI items using the xml file provided in the resources. this would implement the sosci items needed to implement this code.</p>
 <p>first we calculate means with a php code chunck. After that, we add, that values should be set to NULL, when not all qustiones were answeered.</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
 <span class="hljs-comment">// Neurotizsmus</span>
 <span class="hljs-variable">$Neurotizismus</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
 <span class="hljs-string">&#x27;BF01_04&#x27;</span>, 
@@ -360,11 +370,11 @@ image.png</p>
 
 <span class="hljs-variable">$facetten</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;Neurotizismus&#x27;</span>, <span class="hljs-string">&#x27;Extraversion&#x27;</span>, <span class="hljs-string">&#x27;Offenheit&#x27;</span>, <span class="hljs-string">&#x27;Vertraeglichkeit&#x27;</span>, <span class="hljs-string">&#x27;Gewissenhaftigkeit&#x27;</span>);
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <p>However, the problem with this apporaoch is, that it assumes that every participant responds to all items validitely. One might want to calculate indices conditionally e.g., when all responses are present and valid. An Alternative way is to set an index to 0, when the items to calculate the mean contain an invalid responses (here indicated by values &lt;=0). An example of this is provided below.</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">// Neurotizismus</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">// Neurotizismus</span>
 <span class="hljs-variable">$nitems</span> = <span class="hljs-keyword">array</span>(<span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_04&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_09&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_14&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_19&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_24&#x27;</span>), <span class="hljs-title function_ invoke__">value</span>(<span class="hljs-string">&#x27;BF01_29&#x27;</span>));
 <span class="hljs-variable">$isValid</span> = <span class="hljs-literal">true</span>;
 <span class="hljs-variable">$sum</span> = <span class="hljs-number">0</span>;
@@ -464,14 +474,14 @@ image.png</p>
 
 <span class="hljs-variable">$facetten</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;Neurotizismus&#x27;</span>, <span class="hljs-string">&#x27;Extraversion&#x27;</span>, <span class="hljs-string">&#x27;Offenheit&#x27;</span>, <span class="hljs-string">&#x27;Vertraeglichkeit&#x27;</span>, <span class="hljs-string">&#x27;Gewissenhaftigkeit&#x27;</span>);
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <p>After implementing a suiting php calculation of indices, we continue to implement the radar chat. We create in this example a radar plot with two datasets. a our previously calculated and one with specified scores. To can get these scores using a publication with normed scores. I use XXXXX for this example.
 Now we implement the HTML-Code. I will seperated it into three parts. All three part must be implemented in one conitnuous html chunck to reproduce the results.
 The first cpart of the code allows us to write the actual PDF file, display a button below the plot to download it and create the canvas. I specify the button to be bold and steelblue for better visual.</p>
 <p>Part1:</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Chart with Download Link<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Chart with Download Link<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
@@ -491,11 +501,11 @@ The first cpart of the code allows us to write the actual PDF file, display a bu
   <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <p>Part2: here I add the real participant datan and norm score values which are specified using scores reported in XXX Sato. Additonally the the scale is set to 1 to 5 and label sizes are adjusted.</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code>//<span class="hljs-comment">&lt;!-- This should be below part 1  --&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code>//<span class="hljs-comment">&lt;!-- This should be below part 1  --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
   <span class="hljs-keyword">const</span> { jsPDF } = <span class="hljs-variable language_">window</span>.<span class="hljs-property">jspdf</span>;
   <span class="hljs-keyword">const</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;myChart&#x27;</span>);
@@ -564,11 +574,11 @@ The first cpart of the code allows us to write the actual PDF file, display a bu
   });
 
 </span></code></pre>
-</div></code></pre>
+      </div></code></pre>
 <p>Part3: In this code chunck i write the PDF file and make it visually appeling by including, Headers, footers, lines and text elements. It is recommended to brief participants about their results (its interpretations, conditions and limtis). Note that sizes are adjusted for this text. You might want to include other chuncks of text which need further adjustments regarding text size, text positioning and additional elements.</p>
 <pre><code class="language-javascript"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code>  <span class="hljs-comment">//&lt;!-- This should be below part 2  --&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code>  <span class="hljs-comment">//&lt;!-- This should be below part 2  --&gt;</span>
 <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;downloadPdf&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
     <span class="hljs-title function_">html2canvas</span>(ctx, {
       <span class="hljs-attr">onrendered</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">canvas</span>) {
@@ -651,7 +661,7 @@ Nähere Informationen in &quot;The Five-Factor Model of Personality: Theoretical
   });
 &lt;/script&gt;
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <p>The text chuncks i juse can be easly changed. Based on the text length and sizes, one might need to adapt the positioning. This can sometimes be tricky.</p>
 <h2 id="5-addressing-common-issues"><a class="markdownIt-Anchor" href="#5-addressing-common-issues"></a> 5. Addressing Common Issues</h2>
 <ul>
@@ -684,12 +694,12 @@ error pages.</p>
 <p><strong>Q: I want to customize the custom error template output.</strong></p>
 <p><strong>A:</strong> In your theme template folder for your site, copy the template
 provided by the <strong>Customerror</strong> module
-(i.e. <code>templates/customerror.html.twig</code>) and then make your
+(i.e. <span class='yellow-quote'>templates/customerror.html.twig</span>) and then make your
 modifications there.</p>
 <p><strong>Q: I want to have a different template for my 404 and 403 pages.</strong></p>
-<p><strong>A:</strong> Copy <code>customerror.html.twig</code> to
-<code>customerror--404.html.twig</code> and <code>customerror--403.html.twig</code>. You
-do not need a <code>customerror.html.twig</code> for this to work.</p>
+<p><strong>A:</strong> Copy <span class='yellow-quote'>customerror.html.twig</span> to
+<span class='yellow-quote'>customerror--404.html.twig</span> and <span class='yellow-quote'>customerror--403.html.twig</span>. You
+do not need a <span class='yellow-quote'>customerror.html.twig</span> for this to work.</p>
 <h2 id="6-conclusion"><a class="markdownIt-Anchor" href="#6-conclusion"></a> 6. Conclusion</h2>
 <p>In this article, we have discussed how to provide direct feedback on survey results for your participants using SoSci Survey. By leveraging HTML, CSS, and JavaScript, researchers can create engaging and informative feedback that enhances the validity of the data collected. We have also demonstrated the implementation of a downloadable PDF feature that complies with the General Data Protection Regulation. We hope that this article has provided you with valuable insights and practical guidance for improving your survey research.</p>
 <p>Providing real-time graphical feedback in SoSci Survey enriches the participant experience and is likely to improve data quality. By adhering to GDPR guidelines, this feature makes an excellent addition to any academic survey.</p>
@@ -700,8 +710,8 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
 </ul>
 <p>###EXAMPLE1 Full Code Bar plot:</p>
 <pre><code class="language-php"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">// Wert/Ergebnis ermitteln</span>
 <span class="hljs-comment">// variable1</span>
 <span class="hljs-variable">$variable1</span>= <span class="hljs-title function_ invoke__">valueMean</span>(<span class="hljs-keyword">array</span>(
 <span class="hljs-string">&#x27;var_01&#x27;</span>, 
@@ -729,10 +739,10 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
 <span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable1%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable1</span>));
 <span class="hljs-title function_ invoke__">replace</span>(<span class="hljs-string">&#x27;%variable2%&#x27;</span>, <span class="hljs-title function_ invoke__">sprintf</span>(<span class="hljs-string">&#x27;%1.1f&#x27;</span>, <span class="hljs-variable">$variable2</span>));
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the Chart.js library --&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the Chart.js library --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
@@ -768,12 +778,12 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
   });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <h3 id="example2-change-barplot-to-linechart"><a class="markdownIt-Anchor" href="#example2-change-barplot-to-linechart"></a> EXAMPLE2 change barplot to linechart</h3>
 <h3 id="example3"><a class="markdownIt-Anchor" href="#example3"></a> EXAMPLE3</h3>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Create a canvas element to render the chart --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radarChart&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
@@ -792,12 +802,12 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
   });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <h3 id="example-3"><a class="markdownIt-Anchor" href="#example-3"></a> EXAMPLE 3</h3>
 <p>download</p>
 <pre><code class="language-html"><div class="code-snippet">
-  <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/clipicon.png" alt="Copy Code" class="button-icon"> Copy Code</button>
-  <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the jsPDF and html2canvas libraries --&gt;</span>
+        <button class="copy-code-button" onclick="copyCodeToClipboard(this)"> <img src="../assets/images/copy-24.png" alt="Copy code" class="button-icon"> Copy code</button>
+        <pre class="hljs"><code><span class="hljs-comment">&lt;!-- Include the jsPDF and html2canvas libraries --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
@@ -818,7 +828,7 @@ do not need a <code>customerror.html.twig</code> for this to work.</p>
   });
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-</div></code></pre>
+      </div></code></pre>
 <h2 id="literature"><a class="markdownIt-Anchor" href="#literature"></a> Literature</h2>
 <p>https://www.soscisurvey.de/help/doku.php/en:create:feedback-correct
 https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</p>
@@ -831,7 +841,7 @@ https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</p>
           await navigator.clipboard.writeText(code);
           element.innerHTML = 'Copied';
           setTimeout(() => {
-            element.innerHTML = '<img src=\"../assets/images/clipicon.png\" alt=\"Copy Code\" class="button-icon"> Copy Code';
+            element.innerHTML = '<img src=\"../assets/images/copy-24.png\" alt=\"Copy Code\" class="button-icon"> Copy Code';
           }, 3000);
         } catch (err) {
           console.error('Failed to copy text: ', err);
@@ -839,17 +849,10 @@ https://www.soscisurvey.de/help/doku.php/en:create:feedback-visual</p>
       }
       </script></body>
       </html>
+      <!-- Add this script to the end of your blogarticles-->
       <script>
-      window.onload = function() {
-        window.parent.postMessage(
-          {"function": "adjustHeight", "height": document.body.scrollHeight + 20},
-          "*");
-      };
-      
-      window.addEventListener("message", function(event) {
-        if (event.data["function"] === "adjustHeight") {
-          const iframe = document.getElementById("myIframe");
-          iframe.style.height = event.data.height + "px";
+        window.onload = function() {
+          window.parent.postMessage({"height": document.body.scrollHeight}, "*");
         }
-      }, false);
-    </script>
+      </script>
+      
