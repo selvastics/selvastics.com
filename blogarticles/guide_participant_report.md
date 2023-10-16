@@ -830,6 +830,10 @@ borderColor: [
 ```
 
 ## References
+Chart.js. (n.d.). Samples. Retrieved from [https://www.chartjs.org/docs/latest/samples/information.html](https://www.chartjs.org/docs/latest/samples/information.html)
+
+Rammstedt, B., Lechner, C. M., & Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. *Journal of Intelligence, 6*(2), 28. [https://doi.org/10.1027/1015-5759/a000481](https://doi.org/10.1027/1015-5759/a000481)
+
 r-graph Gallery. (n.d.). Retrieved from [https://r-graph-gallery.com/index.html](https://r-graph-gallery.com/index.html)
 
 SoSci Survey. (n.d.). Features. Retrieved from [https://www.soscisurvey.de/en/features](https://www.soscisurvey.de/en/features)
@@ -842,6 +846,4 @@ SoSci Survey. (n.d.). Creating Layout. Retrieved from [https://www.soscisurvey.d
 
 SoSci Survey. (n.d.). Creating Questions: Scale - Inverting Items. Retrieved from [https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items](https://www.soscisurvey.de/help/doku.php/en:create:questions:scale#inverting_items)
 
-Chart.js. (n.d.). Samples. Retrieved from [https://www.chartjs.org/docs/latest/samples/information.html](https://www.chartjs.org/docs/latest/samples/information.html)
 
-Rammstedt, B., Lechner, C. M., & Danner, D. (2018). Relationships between personality and cognitive ability: A facet-level analysis. *Journal of Intelligence, 6*(2), 28. [https://doi.org/10.1027/1015-5759/a000481](https://doi.org/10.1027/1015-5759/a000481)
