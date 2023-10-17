@@ -1,0 +1,59 @@
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+- **Aitchison, L., & Lengyel, M. (2017).** With or without you: predictive coding and Bayesian inference in the brain. *Current Opinion in Neurobiology*, *46*, 219-227. https://doi.org/10.1016/j.conb.2017.08.010  
+- **Bain, R. (2016).** Are our brains Bayesian? *Significance*, *13*(4), 14-19. https://doi.org/10.1111/j.1740-9713.2016.00935.x  
+- **Bayes, T. (1763).** An essay towards solving a problem in the doctrine of chances. *Philosophical Transactions of the Royal Society of London*, *53*, 370-418.  
+- **Berkson, J. (1946).** Limitations of the Application of Fourfold Table Analysis to Hospital Data. *Biometrics Bulletin*, *2*(3), 47-53. https://doi.org/10.1093/ije/dyu022  
+- **Casscells, W., Schoenberger, A., & Graboys, T. B. (1978).** Interpretation by physicians of clinical laboratory results. *New England Journal of Medicine*, *299*(18), 999-1001. https://doi.org/10.1056/NEJM197811022991808  
+- **Chen, W. J., & Wang, J. T. (2020).** A modified Monty Hall problem. *Theory and Decision*, *89*, 151-156. https://doi.org/10.1007/s11238-020-09757-1  
+- **Clark, A. (2013).** Whatever next? Predictive brains, situated agents, and the future of cognitive science. *Behavioral and Brain Sciences*, *36*(3), 181-204. https://doi.org/10.1017/S0140525X12000477  
+- **Cohen, J. (1994).** The earth is round (p < .05). *American Psychologist*, *49*(12), 997–1003. https://doi.org/10.1037/0003-066X.49.12.997  
+- **Croson, R., & Sundali, J. (2005).** The gambler's fallacy and the hot hand: Empirical data from casinos. *Journal of Risk and Uncertainty*, *30*(3), 195-209. https://doi.org/10.1007/s11166-005-1153-2  
+- **Dahlman, C., Zenker, F., & Sarwar, F. (2016).** Miss rate neglect in legal evidence. *Law, Probability and Risk*, *15*(4), 239-250. https://doi.org/10.1093/lpr/mgw007  
+- **Daw, N. D., O'Doherty, J. P., Dayan, P., Seymour, B., & Dolan, R. J. (2005).** Cortical substrates for exploratory decisions in humans. *Nature*, *441*(7095), 876-879. https://doi.org/10.1038/nature04766  
+- **Denève, S., & Jardri, R. (2016).** Circular inference: mistaken belief, misplaced trust. *Current Opinion in Behavioral Sciences*, *11*, 40-48. https://doi.org/10.1016/j.cobeha.2016.04.001  
+- **Doelling, K. B., & Assaneo, M. F. (2021).** Neural oscillations are a start toward understanding brain activity rather than the end. *PLoS Biology*, *19*(5), e3001234. https://doi.org/10.1371/journal.pbio.3001234  
+- **Erwig, M., & Walkingshaw, E. (2009).** A DSL for explaining probabilistic reasoning. In *IFIP Working Conference on Domain-Specific Languages*, 335-359. https://doi.org/10.1007/978-3-642-03034-5_16  
+- **Friston, K. (2010).** The free-energy principle: a unified brain theory? *Nature Reviews Neuroscience*, *11*(2), 127-138. https://doi.org/10.1038/nrn2787  
+- **Friston, K., Kilner, J., & Harrison, L. (2006).** A free energy principle for the brain. *Journal of Physiology-Paris*, *100*(1-3), 70-87. https://doi.org/10.1016/j.jphysparis.2006.10.001  
+- **Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013).** Bayesian Data Analysis (3rd ed.). *Chapman & Hall/CRC*. https://doi.org/10.1201/b16018  
+- **Gershman, S. J. (2015).** Do learning rates adapt to the distribution of rewards? *Psychonomic Bulletin & Review*, *22*(5), 1320-1327. https://doi.org/10.3758/s13423-014-0790-3  
+- **Gigerenzer, G. (2004).** Mindless statistics. *Journal of Socio-Economics*, *33*(5), 587-606. https://doi.org/10.1016/j.socec.2004.09.033  
+- **Gigerenzer, G. (2020).** How to explain behavior? *Topics in Cognitive Science*, *12*(4), 1363-1381. https://doi.org/10.1111/tops.12480  
+- **Gigerenzer, G., Hertwig, R., Van Den Broek, E., Fasolo, B., & Katsikopoulos, K. V. (2005).** “A 30% chance of rain tomorrow”: How does the public understand probabilistic weather forecasts? *Risk Analysis: An International Journal*, *25*(3), 623-629. https://doi.org/10.1111/j.1539-6924.2005.00608.x  
+- **Gijsen, S., Grundei, M., Lange, R. T., Ostwald, D., & Blankenburg, F. (2021).** Neural surprise in somatosensory Bayesian learning. *PLoS Computational Biology*, *17*(2). https://doi.org/10.1371/journal.pcbi.1008068  
+- **Griffiths, T. L., Chater, N., Kemp, C., Perfors, A., & Tenenbaum, J. B. (2008).** Probabilistic models of cognition: exploring representations and inductive biases. *Trends in Cognitive Sciences*, *14*(8), 357-364. https://doi.org/10.1016/j.tics.2010.05.004  
+- **Griffiths, T. L., Chater, N., Norris, D., & Pouget, A. (2012).** How the Bayesians got their beliefs (and what those beliefs actually are): Comment on Bowers and Davis (2012). https://doi.org/10.1037/a0026884  
+- **Handmer, J., & Proudley, B. (2007).** Communicating uncertainty via probabilities: The case of weather forecasts. *Environmental Hazards*, *7*(2), 79-87. https://doi.org/10.1016/j.envhaz.2007.05.002  
+- **Hasson, U. (2017).** The neurobiology of uncertainty: Implications for statistical learning. *Philosophical Transactions of the Royal Society B: Biological Sciences*, *372*(1711), 20160048. https://doi.org/10.1098/rstb.2016.0048  
+- **Herd, S., Krueger, K., Nair, A., Mollick, J., & O’Reilly, R. (2021).** Neural mechanisms of human decision-making. *Cognitive, Affective, & Behavioral Neuroscience*, *21*(1), 35-57. https://doi.org/10.3758/s13415-020-00842-0  
+- **Hoekstra, R., Morey, R. D., Rouder, J. N., & Wagenmakers, E. J. (2014).** Robust misinterpretation of confidence intervals. *Psychonomic Bulletin & Review*, *21*, 1157-1164. https://doi.org/10.3758/s13423-013-0572-3  
+- **Jaynes, E. T. (2003).** Probability theory: The logic of science. *Cambridge University Press*. https://doi.org/10.1017/CBO9780511790423  
+- **Jones, M., & Love, B. C. (2021).** Bayesian fundamentalism or enlightenment? On the explanatory status and theoretical contributions of Bayesian models of cognition. *Behavioral and Brain Sciences*, *34*(4), 169-188. https://doi.org/10.1017/S0140525X10003134  
+- **Kahneman, D., & Tversky, A. (1973).** On the psychology of prediction. *Psychological Review*, *80*(4), 237-251. https://psycnet.apa.org/doiLanding?doi=10.1037%2Fh0034747  
+- **Kersten, D., Mamassian, P., & Yuille, A. (2004).** Object perception as Bayesian inference. *Annual Review of Psychology*, *55*, 271-304. https://doi.org/10.1146/annurev.psych.55.090902.142005  
+- **Krauss, S., & Wang, X. T. (2003).** The psychology of the Monty Hall problem: Discovering psychological mechanisms for solving a tenacious brain teaser. *Journal of Experimental Psychology: General*, *132*(1), 3-22. https://doi.org/10.1037/0096-3445.132.1.3  
+- **Lee, T. S., & Mumford, D. (2003).** Hierarchical Bayesian inference in the visual cortex. *Journal of the Optical Society of America, A, Optics, Image Science & Vision*, *20*(7), 1434–1448. https://doi.org/10.1364/JOSAA.20.001434 
+- **Leung, W. C. (2002).** The prosecutor's fallacy—A pitfall in interpreting probabilities in forensic evidence. *Medicine, Science and the Law*, *42*(1), 44-50. https://doi.org/10.1177/002580240204200108  
+- **MacKay, D. J. (2003).** Information theory, inference and learning algorithms. *Cambridge University Press*. https://openlibrary.org/books/OL22584006M  
+- **McKenzie, C. R. (2003).** Rational models as theories–not standards–of behavior. *Trends in Cognitive Sciences*, *7*(9), 403-406. https://doi.org/10.1016/S1364-6613(03)00196-7  
+- **Murphy, A. H., Lichtenstein, S., Fischhoff, B., & Winkler, R. L. (1980).** Misinterpretations of precipitation probability forecasts. *Bulletin of the American Meteorological Society*, *61*(7), 695-701. https://doi.org/10.1175/1520-0477(1980)061<0695:MOPPF>2.0.CO;2  
+- **Nasrabadi, N. M. (2007).** Pattern recognition and machine learning. *Journal of Electronic Imaging*, *16*(4), 049901. https://doi.org/10.1117/1.2819119  
+- **Neth, H., & Gigerenzer, G. (2015).** Heuristics: Tools for an uncertain world. In *Emerging trends in the social and behavioral sciences*, 1-18. https://doi.org/10.1002/9781118900772.etrds0394  
+- **Perfors, A., Tenenbaum, J. B., Griffiths, T. L., & Xu, F. (2011).** A tutorial introduction to Bayesian models of cognitive development. *Cognition*, *120*(3), 302-321. https://doi.org/10.1016/j.cognition.2010.11.015  
+- **Popper, K. (1959).** The Logic of Scientific Discovery. *Hutchinson & Co*. https://doi.org/10.4324/9780203994627
+- **Pourret, O., Na, P., & Marcot, B. (Eds.). (2008).** Bayesian networks: a practical guide to applications. *John Wiley & Sons*. https://doi.org/10.1002/9780470994559  
+- **Qiao, L., Zhang, L., & Chen, A. (2023).** Brain connectivity modulation by Bayesian surprise in relation to control demand drives cognitive flexibility via control engagement. *Cerebral Cortex*, *33*(5), 1985-2000. https://doi.org/10.1093/cercor/bhac187  
+- **Rahnev, D. (2019).** The Bayesian brain: What is it and do humans have it? *Behavioral and Brain Sciences*, *42*. https://doi.org/10.1017/S0140525X19001377  
+- **Roney, C. J., & Trick, L. M. (2009).** Sympathetic magic and perceptions of randomness: The hot hand versus the gambler's fallacy. *Thinking & Reasoning*, *15*(2), 117-137. https://doi.org/10.1080/13546780902847137  
+- **Sedley, W., Gander, P. E., Kumar, S., Kovach, C. K., Oya, H., Kawasaki, H., ... & Griffiths, T. D. (2016).** Neural signatures of perceptual inference. *elife*, *5*, e11476. https://doi.org/10.7554/eLife.11476.001  
+- **Taleb, N. N. (2008).** The black swan. *Penguin Books*.
+- **Tenenbaum, J. B., Kemp, C., Griffiths, T. L., & Goodman, N. D. (2011).** How to grow a mind: Statistics, structure, and abstraction. *Science*, *331*(6022), 1279-1285. https://doi.org/10.1126/science.1192788  
+- **Thompson, W. C., & Schumann, E. L. (1987).** Interpretation of statistical evidence in criminal trials: The prosecutor's fallacy and the defense attorney's fallacy. *Law and Human Behavior*, *11*(3), 167-187. https://doi.org/10.1007/BF01044641  
+- **Tukey, J. W. (1962).** The Future of Data Analysis. *Annals of Mathematical Statistics*, *33*, 1-67. https://doi.org/10.1214/AOMS/1177704711  
+- **Tversky, A., & Kahneman, D. (1974).** Judgment under uncertainty: Heuristics and biases. *Science*, *185*(4157), 1124-1131. https://doi.org/10.1126/science.185.4157.1124  
+- **Visalli, A., Capizzi, M., Ambrosini, E., Kopp, B., & Vallesi, A. (2021).** Electroencephalographic correlates of temporal Bayesian belief updating and surprise. *NeuroImage*, *231*, 117867. https://doi.org/10.1016/j.neuroimage.2021.117867  
+- **Wiese, W. (2014).** Perceptual presence in the Kuhnian-Popperian Bayesian brain: a commentary on Anil K. Seth. In *Open Mind*. *Open MIND*. https://doi.org/10.25358/openscience-450  
+- **Williams, D. (2021).** Epistemic Irrationality in the Bayesian Brain. *The British Journal for the Philosophy of Science*, *72*(4). https://doi.org/10.1093/bjps/axz044

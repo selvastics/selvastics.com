@@ -1,0 +1,45 @@
+`r if (knitr::is_html_output()) '
+# Appendix {-}
+'`
+## Applied Bayes theorem {-}
+Suppose we have a jar containing 100 marbles, of which 30 are red, and 70 are blue. We want to know the probability that a randomly selected marble will be red, given that it is a small marble. We also know that 40 of the marbles in the jar are small, and 25 of those small marbles are red.
+Let \( P(\text{red}) \)  be the probability that a randomly selected marble from the jar is red. 
+Then, 
+\[
+P(\text{red}) = \frac{30}{100} = \frac{3}{10} = 0.3
+\]
+
+Let \( P(\text{small}) \) be the probability that a randomly selected marble from the jar is small. Then, 
+\[
+P(\text{small}) = \frac{40}{100} = \frac{2}{5} = 0.4
+\]
+Let \( P(\text{red and small}) \) be the probability that a randomly selected marble from the jar is both red and small. 
+Then, 
+\[
+P(\text{red and small}) = \frac{25}{100} = \frac{1}{4} = 0.25
+\]
+Then, using Bayes' theorem, we can calculate the probability that a small marble is red as follows:
+\[
+P(\text{red} | \text{small}) = \frac{P(\text{red and small}) \times P(\text{small})}{P(\text{red})} = \frac{0.25 \times 0.4}{0.3} \approx 0.33
+\]
+
+Therefore, the probability that a small marble is red is approximately 33%.
+
+## Applied Bayes theorem with unknown unconditional probability {-}
+Suppose we want to calculate the probability that it will rain tomorrow, given that the weather forecast predicts a 60% chance of rain. We also know that the weather forecast is correct 70% of the time and that it rains on 20% of days.
+Let \( P(A) \) be the probability that it will rain.
+Let \( P(B) \) be the probability that the weather forecast predicts rain.
+Let \( P(A | B) \) be the probability that it will rain, given that the forecast predicts rain.
+Let \( P(B | A) \) be the probability that the forecast predicts rain, given that it will rain.
+Let \( P(B | ¬A) \) be the probability that the forecast predicts rain, given that it will not rain.
+
+Then, 
+\[
+\begin{aligned}
+P(\text{rain tomorrow} | \text{forecast predicts rain}) &= \frac{0.7 \times 0.2}{0.7 \times 0.2 + (1 - 0.7) \times (1 - 0.2)} \\
+&= \frac{0.267}{0.267 + 0.06} = \frac{0.267}{0.327} \approx 0.814
+\end{aligned}
+\]
+
+
+Therefore, the probability that it will rain tomorrow, given that the forecast predicts rain is approximately 81.4%.

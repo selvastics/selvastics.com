@@ -1,0 +1,22 @@
+--- 
+title: Probabilistic fallacies in the Bayesian brain – A critique of the Bayesian
+  approach to cognition
+author: "Clievins Selva"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book.bib
+- packages.bib
+description: |
+  Selvastics
+link-citations: yes
+github-repo: "rstudio/bookdown-demo"
+---
+
+# Abstract {-}
+The Bayesian Brain hypothesis is an influential idea in cognitive neuroscience, helping to explain perception, decision-making, and learning. However, it faces obstacles related to falsifiability and conflicts with several fallacies. In this paper, I assess the transparency of Bayesian methods in mathematics and statistics against the Bayesian Brain hypothesis, the limits of intuitive probability, and possible issues with expertise in probabilistic reasoning. The analysis highlights the need to recognize the constraints and difficulties of the Bayesian approach and to investigate alternative ways of understanding cognitive processes. I argue for a thoughtful examination of the Bayesian approach's limitations and a move towards a more mindful use of statistics. In doing this, I aim to promote a deeper and more critical view of the Bayesian Brain hypothesis and its influence on cognitive neuroscience.
+
+# Introduction
+An emerging area of interest within cognitive science is the Bayesian approach to cognition, which posits that the brain processes information using probabilistic models and makes decisions based on Bayesian inference (Friston, 2010). This approach suggests that the brain continually updates its beliefs based on statistical principles and new evidence to make predictions about the likelihood of different outcomes (Denève & Jardri, 2016). However, despite its widespread acceptance, the Bayesian approach to cognition is not without criticisms and limitations (Jones & Love, 2021).
+The importance of examining the Bayesian approach to cognition lies in its far-reaching implications for neuroscience and psychology. A deeper understanding of this approach and its limitations can contribute to developing more accurate models of human cognition and decision-making, benefiting these interdisciplinary fields. This paper adds value by critically analyzing the theoretical foundations of the Bayesian approach to cognition, covering aspects such as Bayes' theorem, neuronal surprise, probabilistic reasoning, falsifiability, transparency, and intuitive probability. The research question that this paper aims to address is: "To what extent do probabilistic fallacies affect the reliability and validity of the Bayesian approach to cognition?" Finally, I will discuss the key findings of my analysis, interpret their implications, and provide suggestions for future research directions in my concluding remarks.
